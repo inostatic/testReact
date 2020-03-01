@@ -1,0 +1,23 @@
+.th {
+    display: grid;
+}
+
+.th div {
+    border: 1px solid #ffffff;
+}
+.tr {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+}
+
+.sort {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.sort:hover {
+    color: gold;
+    cursor: pointer;
+}

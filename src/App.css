@@ -1,0 +1,26 @@
+.app-wrapper {
+    width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+}
+
+.app-wrapper div {
+    background-color: #28314E;
+    border: 1px solid #212941;
+    border-radius: 5px;
+    padding: 8px 15px;
+    color: #ffffff;
+    font-size: 18px;
+    font-family: Roboto;
+}
+
+a {
+     color: #ffffff;
+     text-decoration: none;
+ }
+
+a.active {
+    color: gold;
+}
