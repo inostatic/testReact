@@ -9,9 +9,9 @@ import SingleInfo from "./SingleInfo/SingleInfo";
 const Smalldata = (props) => {
     return (
         <div className="th">
-            <AddString/>
+            <AddString addPost={props.addPost} newTextInput={props.newTextInput} updateInputText={props.updateInputText}/>
             <TableHeader/>
-            <Post stringData={props.stringData} />
+            <Post stringData={props.smallData} />
             <Search/>
             <SingleInfo/>
         </div>

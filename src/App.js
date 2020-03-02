@@ -10,8 +10,8 @@ const App = (props) => {
         <BrowserRouter>
             <div className='app-wrapper'>
                 <Header/>
-                <Route path="/bigdata" render={ () => <Bigdata stringData={props.stringData} /> } />
-                <Route path="/smalldata" render={ () => <Smalldata stringData={props.stringData} /> } />
+                <Route path="/bigdata" render={ () => <Bigdata bigData={props.state.bigData} newTextInput={props.state.newTextInput} addPost={props.addPost} updateInputText={props.updateInputText} /> } />
+                <Route path="/smalldata" render={ () => <Smalldata smallData={props.state.smallData} newTextInput={props.state.newTextInput} addPost={props.addPost} updateInputText={props.updateInputText} /> } />
             </div>
         </BrowserRouter>
     );
