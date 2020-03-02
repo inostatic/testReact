@@ -34,15 +34,16 @@
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\OSPanel\domains\react\my-app\src\components\Table" />
+      <recent name="D:\OSPanel\domains\react\my-app\src\components" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\OSPanel\domains\testReact\src\redux\data" />
       <recent name="D:\OSPanel\domains\react\my-app\src\components\Table" />
       <recent name="D:\OSPanel\domains\react\my-app\src\components\Table\TableHeader" />
       <recent name="D:\OSPanel\domains\react\my-app\src\components\Table\Data" />
       <recent name="D:\OSPanel\domains\react\my-app\src\components\Header" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\OSPanel\domains\react\my-app\src\components\Table" />
-      <recent name="D:\OSPanel\domains\react\my-app\src\components" />
     </key>
   </component>
   <component name="RunManager">
@@ -68,6 +69,7 @@
       <workItem from="1582912643451" duration="17000" />
       <workItem from="1582912683098" duration="49432000" />
       <workItem from="1583135548678" duration="18324000" />
+      <workItem from="1583167485268" duration="11349000" />
     </task>
     <servers />
   </component>

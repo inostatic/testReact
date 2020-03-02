@@ -1,5 +1,7 @@
 import React from "react";
 import './AddString.css';
+import {addPostActionCreator, updatePostActionCreator} from "../../../redux/store";
+
 
 const AddString = (props) => {
 
@@ -9,14 +11,9 @@ const AddString = (props) => {
     let email = React.createRef();
     let phone = React.createRef();
 
-    // let input_id = id.current.value;
-    // let input_firstName = firstName.current.value;
-    // let input_lastName = lastName.current.value;
-    // let input_email = email.current.value;
-    // let input_phone = phone.current.value;
 
     let addForm = () => {
-        props.addPost();
+        props.dispatch(addPostActionCreator());
 
     }
 
@@ -28,7 +25,7 @@ const AddString = (props) => {
             email: email.current.value,
             phone: phone.current.value,
         };
-        props.updateInputText(newText);
+        props.dispatch(updatePostActionCreator(newText));
     }
 
 
