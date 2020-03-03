@@ -1,8 +1,11 @@
 import {combineReducers, createStore} from "redux";
-import smalldataReducer from "./SD-educer";
+import SDReducer from "./SD-educer";
+import BDReducer from "./BD-reducer";
+
 
 let reducer = combineReducers({
-    'dataReducer': smalldataReducer,
+    smallData: SDReducer,
+    bigData: BDReducer,
 })
 
 let store = createStore(reducer);

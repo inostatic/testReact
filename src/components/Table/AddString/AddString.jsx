@@ -5,6 +5,7 @@ import {addBigDataPostActionCreator, updateBigDataPostActionCreator} from "../..
 
 
 const AddString = (props) => {
+
     let addPostActionCreator;
     let updatePostActionCreator;
     let id = React.createRef();
