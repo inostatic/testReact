@@ -1,20 +1,33 @@
 import {SD} from './data/SD';
 import {BD} from './data/BD';
-import dataReducer from "./data-reducer";
+import SDReducer from "./SD-educer";
+import BDReducer from "./BD-reducer";
 
 
 
 let store = {
     _state: {
-        smallData: SD,
-        bigData: BD,
-        newTextInput: {
-            input_id: '',
-            input_firstName: '',
-            input_lastName: '',
-            input_email: '',
-            input_phone: '',
-        },
+        smallData: {
+            SD: SD,
+            newTextInput: {
+                input_id: '',
+                input_firstName: '',
+                input_lastName: '',
+                input_email: '',
+                input_phone: '',
+            },
+        } ,
+        bigData:{
+            BD: BD,
+            newTextInput: {
+                input_id: '',
+                input_firstName: '',
+                input_lastName: '',
+                input_email: '',
+                input_phone: '',
+            },
+        }
+
     },
     renderEntireTree() {
         console.log('state changed');
@@ -23,7 +36,8 @@ let store = {
         return this._state;
     },
     dispatch(action) {
-       this._state = dataReducer(this._state, action);
+       this._state = SDReducer(this._state, action);
+       this._state = BDReducer(this._state, action);
        this.renderEntireTree(this._state);
 
     },

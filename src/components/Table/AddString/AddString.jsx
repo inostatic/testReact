@@ -1,22 +1,33 @@
 import React from "react";
 import './AddString.css';
-import {addPostActionCreator, updatePostActionCreator} from "../../../redux/data-reducer";
+import {addSmallDataPostActionCreator, updateSmallDataPostActionCreator} from "../../../redux/SD-educer";
+import {addBigDataPostActionCreator, updateBigDataPostActionCreator} from "../../../redux/BD-reducer";
 
 
 const AddString = (props) => {
-
+    let addPostActionCreator;
+    let updatePostActionCreator;
     let id = React.createRef();
     let firstName = React.createRef();
     let lastName = React.createRef();
     let email = React.createRef();
     let phone = React.createRef();
 
+    switch (props.data) {
+        case 'SD':
+            addPostActionCreator = addSmallDataPostActionCreator;
+            updatePostActionCreator = updateSmallDataPostActionCreator;
+            break;
+        case 'BD':
+            addPostActionCreator = addBigDataPostActionCreator;
+            updatePostActionCreator = updateBigDataPostActionCreator;
+            break;
+    }
 
     let addForm = () => {
         props.dispatch(addPostActionCreator());
 
     }
-
     let onFormChange = () => {
         let newText = {
             id: id.current.value,
