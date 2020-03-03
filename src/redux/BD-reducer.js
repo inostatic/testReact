@@ -15,7 +15,6 @@ let initialState = {
 }
 
 
-
 const BDReducer = (state = initialState, action) => {
     switch (action.type) {
         case BD_ADD_POST:
