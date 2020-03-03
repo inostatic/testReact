@@ -1,6 +1,6 @@
 import React from "react";
 import './AddString.css';
-import {addPostActionCreator, updatePostActionCreator} from "../../../redux/store";
+import {addPostActionCreator, updatePostActionCreator} from "../../../redux/data-reducer";
 
 
 const AddString = (props) => {
