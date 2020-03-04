@@ -11,7 +11,8 @@ let initialState = {
         input_lastName: '',
         input_email: '',
         input_phone: '',
-    }
+    },
+
 }
 
 
