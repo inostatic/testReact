@@ -5,6 +5,8 @@ import Header from "./components/Header/Header";
 import Smalldata from "./components/Table/Smalldata";
 import {BrowserRouter, Route} from 'react-router-dom';
 
+
+
 const App = (props) => {
     return(
         <BrowserRouter>
@@ -18,4 +20,3 @@ const App = (props) => {
 }
 
 export default App;
-

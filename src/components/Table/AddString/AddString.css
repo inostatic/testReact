@@ -1,6 +1,6 @@
-/*.addString {*/
-/*    text-align: right;*/
-/*}*/
+.addString {
+    text-align: right;
+}
 .form {
     display: grid;
     /*grid-template-rows: 12fr 1fr;*/
@@ -8,17 +8,17 @@
     grid-row-gap: 5px;
 
 }
-.form span:nth-child(1) {
-    grid-column-start: 1;
-    grid-column-end: -1;
-    text-align: right;
-}
+/*.form span:nth-child(1) {*/
+/*    grid-column-start: 1;*/
+/*    grid-column-end: -1;*/
+/*    text-align: right;*/
+/*}*/
 
-.form span:nth-child(12) {
-    grid-column-start: 1;
-    grid-column-end: -1;
-    text-align: right;
-}
+/*.form span:nth-child(12) {*/
+/*    grid-column-start: 1;*/
+/*    grid-column-end: -1;*/
+/*    text-align: right;*/
+/*}*/
 
 .form input {
     border-radius: 3px;

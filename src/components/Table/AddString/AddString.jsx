@@ -1,6 +1,6 @@
 import React from "react";
 import './AddString.css';
-import {addSmallDataPostActionCreator, updateSmallDataPostActionCreator} from "../../../redux/SD-educer";
+import {addSmallDataPostActionCreator, updateSmallDataPostActionCreator} from "../../../redux/SD-reducer";
 import {addBigDataPostActionCreator, updateBigDataPostActionCreator} from "../../../redux/BD-reducer";
 
 
@@ -44,17 +44,17 @@ const AddString = (props) => {
     return (
         <span>
             <input type="checkbox" id="hd-1" className="hide"/>
-            <label htmlFor="hd-1">Открыть форму</label>
+            <label htmlFor="hd-1" >Открыть форму</label>
             <div className="form" >
                 <span>id </span>
-                <span>firstName </span>
-                <span>lastName </span>
-                <span>email </span>
-                <span>phone </span>
                 <input type="text" ref={id} onChange={onFormChange} value={props.newTextInput.input_id} />
+                <span>firstName </span>
                 <input type="text" ref={firstName} onChange={onFormChange}  value={props.newTextInput.input_firstName} />
+                <span>lastName </span>
                 <input type="text" ref={lastName} onChange={onFormChange} value={props.newTextInput.input_lastName} />
+                <span>email </span>
                 <input type="text" ref={email} onChange={onFormChange} value={props.newTextInput.input_email} />
+                <span>phone </span>
                 <input type="text" ref={phone} onChange={onFormChange} value={props.newTextInput.input_phone} />
                 <span><button onClick={addForm}>Добавить</button></span>
             </div>

@@ -1,6 +1,6 @@
 import {SD} from './data/SD';
 import {BD} from './data/BD';
-import SDReducer from "./SD-educer";
+import SDReducer from "./SD-reducer";
 import BDReducer from "./BD-reducer";
 
 

@@ -1,5 +1,5 @@
 import {combineReducers, createStore} from "redux";
-import SDReducer from "./SD-educer";
+import SDReducer from "./SD-reducer";
 import BDReducer from "./BD-reducer";
 
 
