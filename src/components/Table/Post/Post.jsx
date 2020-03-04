@@ -20,9 +20,8 @@ const Post = (props) => {
         //     </div>
         // );
     }
-    // debugger;
-    let stringTable = props.stringData.map((str, key) => {
 
+    let stringTable = props.stringData.map((str, key) => {
             return (
                 <div className="tr">
                     <span id={key} onClick={GetTextById}>{str.id}</span>

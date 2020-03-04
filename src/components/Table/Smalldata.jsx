@@ -3,15 +3,15 @@ import './Table.css';
 import TableHeader from "./TableHeader/TableHeader";
 import Search from "./Search/Search";
 import SingleInfo from "./SingleInfo/SingleInfo";
-import AddStringContainer from "./AddString/AddStringContainer";
-import PostContainer from "./Post/PostContainer";
+import SDAddStringContainer from "./AddString/SDAddStringContainer";
+import SDPostContainer from "./Post/SDPostContainer";
 
 const Smalldata = (props) => {
     return (
         <div className="th">
-            <AddStringContainer data={'SD'} />
+            <SDAddStringContainer />
             <TableHeader/>
-            <PostContainer data={'SD'} />
+            <SDPostContainer />
             <Search/>
             <SingleInfo/>
         </div>
