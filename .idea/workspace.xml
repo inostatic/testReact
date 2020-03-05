@@ -3,16 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="36bc88da-7db9-409e-bd10-07fe8919b29a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StoreContext.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/AddString/AddStringContainer.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/Bigdata.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Bigdata.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/Post/Post.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Post/Post.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/Post/PostContainer.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/Smalldata.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Smalldata.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/BD-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/BD-reducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/SD-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/SD-reducer.js" afterDir="false" />
     </list>
@@ -36,7 +26,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/Table/Post" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.3.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
@@ -84,6 +74,7 @@
       <workItem from="1583308070137" duration="16774000" />
       <workItem from="1583339808560" duration="564000" />
       <workItem from="1583343850958" duration="9153000" />
+      <workItem from="1583402653581" duration="4066000" />
     </task>
     <servers />
   </component>
