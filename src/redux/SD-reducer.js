@@ -2,6 +2,7 @@ import {SD} from "./data/SD";
 
 const SD_ADD_POST = 'SD-ADD-POST';
 const SD_UPDATE_INPUT_TEXT = 'SD-UPDATE-INPUT-TEXT';
+const SET_POSTS = 'SET-POSTS';
 
 let initialState = {
     SD: SD,
@@ -17,7 +18,6 @@ let initialState = {
 
 
 const SDReducer = (state = initialState, action) => {
-
     switch (action.type) {
         case SD_ADD_POST: {
             let newRow = {
@@ -53,6 +53,12 @@ const SDReducer = (state = initialState, action) => {
                 newTextInput: newTextInput,
             }
         }
+        case SET_POSTS: {
+            return {
+              ...state,
+              SD: [ ...state.SD, ...action.SD ]
+            }
+        }
         default:
             return state;
     }
@@ -60,4 +66,5 @@ const SDReducer = (state = initialState, action) => {
 
 export const addSmallDataPostActionCreator = () => ({type: SD_ADD_POST, DB: "SD"});
 export const updateSmallDataPostActionCreator = (newText) => ({type: SD_UPDATE_INPUT_TEXT, text: newText});
+export const setSmallDataPostActionCreator = (SD) => ({type: SET_POSTS, SD });
 export default SDReducer;

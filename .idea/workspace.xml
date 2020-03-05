@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="36bc88da-7db9-409e-bd10-07fe8919b29a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/BD-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/BD-reducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/SD-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/SD-reducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +73,7 @@
       <workItem from="1583308070137" duration="16774000" />
       <workItem from="1583339808560" duration="564000" />
       <workItem from="1583343850958" duration="9153000" />
-      <workItem from="1583402653581" duration="4066000" />
+      <workItem from="1583402653581" duration="5953000" />
     </task>
     <servers />
   </component>
