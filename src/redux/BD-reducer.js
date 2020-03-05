@@ -1,10 +1,10 @@
-import {BD} from "./data/BD";
 
 const BD_ADD_POST = 'BD-ADD-POST';
 const BD_UPDATE_INPUT_TEXT = 'BD-UPDATE-INPUT-TEXT';
+const BD_SET_POSTS = 'BD_SET-POSTS';
 
 let initialState = {
-    BD: BD,
+    BD: [],
     newTextInput: {
         input_id: '',
         input_firstName: '',
@@ -51,6 +51,12 @@ const BDReducer = (state = initialState, action) => {
                 newTextInput: newTextInput,
             }
         }
+        case BD_SET_POSTS: {
+            return {
+                ...state,
+                BD: [ ...state.BD, ...action.BD ]
+            }
+        }
         default:
             return state;
     }
@@ -58,4 +64,5 @@ const BDReducer = (state = initialState, action) => {
 
 export const addBigDataPostActionCreator = () => ({type: BD_ADD_POST, DB: "BD"});
 export const updateBigDataPostActionCreator = (newText) => ({type: BD_UPDATE_INPUT_TEXT, text: newText});
+export const setBigDataPostActionCreator = (BD) => ({type: BD_SET_POSTS, BD });
 export default BDReducer;

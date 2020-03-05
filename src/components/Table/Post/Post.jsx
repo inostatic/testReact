@@ -2,7 +2,12 @@ import React from "react";
 import '../Table.css';
 
 
+
 const Post = (props) => {
+    if(props.stringData.length === 0) {
+        props.setPostActionCreator(props.DB)
+    }
+
     let GetTextById = (event) => {
         // console.log(event.target.id);
         console.log(props.stringData[event.target.id]);
