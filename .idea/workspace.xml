@@ -4,8 +4,10 @@
     <list default="true" id="36bc88da-7db9-409e-bd10-07fe8919b29a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Table/Post/BDPostContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Post/BDPostContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/Post/Post.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Post/Post.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/Post/Post.jsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Table/Post/SDPostContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Post/SDPostContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/data/BD.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/data/SD.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,25 +29,25 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/Table/Post" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
-    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.3.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="ts.external.directory.path" value="D:\OSPanel\domains\testReact\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\OSPanel\domains\testReact\src\components\Table\Post" />
-      <recent name="D:\OSPanel\domains\testReact\src\components\Table\AddString" />
-      <recent name="C:\OSPanel\domains\react\project\02-first-project\src\components\Table\Post" />
-      <recent name="C:\OSPanel\domains\react\project\02-first-project\src\components\Table\AddString" />
-      <recent name="D:\OSPanel\domains\testReact\src\redux" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\OSPanel\domains\testReact\src\redux\data" />
       <recent name="D:\OSPanel\domains\react\my-app\src\components\Table" />
       <recent name="D:\OSPanel\domains\react\my-app\src\components\Table\TableHeader" />
       <recent name="D:\OSPanel\domains\react\my-app\src\components\Table\Data" />
       <recent name="D:\OSPanel\domains\react\my-app\src\components\Header" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\OSPanel\domains\testReact\src\components\Table\Post" />
+      <recent name="D:\OSPanel\domains\testReact\src\components\Table\AddString" />
+      <recent name="C:\OSPanel\domains\react\project\02-first-project\src\components\Table\Post" />
+      <recent name="C:\OSPanel\domains\react\project\02-first-project\src\components\Table\AddString" />
+      <recent name="D:\OSPanel\domains\testReact\src\redux" />
     </key>
   </component>
   <component name="RunManager">
@@ -83,10 +85,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="690" y="272" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1583346773277">
+    <state x="690" y="272" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1583440429440">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="690" y="272" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1583346773277" />
+    <state x="690" y="272" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1583440429440" />
     <state width="1899" height="285" key="GridCell.Tab.0.bottom" timestamp="1583339986595">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>

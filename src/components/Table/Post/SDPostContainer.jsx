@@ -7,6 +7,7 @@ import {setSmallDataPostActionCreator} from "../../../redux/SD-reducer";
 
 
 
+
 let mapStateToProps = (state) => {
     return {
         posts: state.smallData.SD,

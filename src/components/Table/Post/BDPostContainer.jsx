@@ -6,6 +6,7 @@ import {setBigDataPostActionCreator} from "../../../redux/BD-reducer";
 
 
 
+
 let mapStateToProps = (state) => {
     return {
         posts: state.bigData.BD,
