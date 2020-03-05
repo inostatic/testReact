@@ -1,16 +1,21 @@
 import React from "react";
 import '../Table.css';
-
+import * as axios from 'axios';
 
 
 const Post = (props) => {
-    if(props.stringData.length === 0) {
-        props.setPostActionCreator(props.DB)
+
+    if (props.posts.length === 0) {
+        axios.get(props.URL).then(response => {
+            props.setPostActionCreator(response.data)
+        })
+
+
     }
 
     let GetTextById = (event) => {
         // console.log(event.target.id);
-        console.log(props.stringData[event.target.id]);
+        console.log(props.posts[event.target.id]);
         // return (
         //     <div>
         //         Выбран пользователь: <b>{ props.stringData[event.target.id].firstName + ' ' + props.stringData[event.target.id].lastName }</b>
@@ -26,7 +31,7 @@ const Post = (props) => {
         // );
     }
 
-    let stringTable = props.stringData.map((str, key) => {
+    let postsTable = props.posts.map((str, key) => {
             return (
                 <div className="tr">
                     <span id={key} onClick={GetTextById}>{str.id}</span>
@@ -41,7 +46,7 @@ const Post = (props) => {
 
     return (
         <span>
-            {stringTable}
+            {postsTable}
         </span>
     )
 }
