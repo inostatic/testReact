@@ -1,7 +1,7 @@
 .selectedPage {
     font-weight: bold;
     color: gold;
-
+    cursor: not-allowed;
 
 }
 .normalPage {

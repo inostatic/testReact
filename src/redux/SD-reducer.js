@@ -6,6 +6,7 @@ const SD_SET_CURRENT_PAGE = 'SD_SET-CURRENT-PAGE';
 
 let initialState = {
     SD: [],
+    fullData: [],
     newTextInput: {
         input_id: '',
         input_firstName: '',
@@ -13,7 +14,7 @@ let initialState = {
         input_email: '',
         input_phone: '',
     },
-    pageSize: 5,
+    pageSize: 50,
     totalPostCount: 32,
     currentPage: 1,
 
@@ -39,6 +40,7 @@ const SDReducer = (state = initialState, action) => {
             };
             return {
                 ...state,
+                fullData: [newRow,...state.fullData],
                 SD: [newRow,...state.SD],
                 newTextInput: newTextInput,
             };
@@ -57,15 +59,21 @@ const SDReducer = (state = initialState, action) => {
             }
         }
         case SD_SET_POSTS: {
+            let partPost = action.SD.slice(state.currentPage - 1, state.pageSize);
             return {
               ...state,
-              SD: [ ...state.SD, ...action.SD ]
+              SD: partPost,
+              fullData: [...state.fullData, ...action.SD]
             }
         }
         case SD_SET_CURRENT_PAGE: {
+            let start = (action.currentPage - 1) * state.pageSize;
+            let end = action.currentPage * state.pageSize;
+            let partPost = state.fullData.slice(start, end);
             return {
                 ...state,
                 currentPage: action.currentPage,
+                SD: partPost,
             }
         }
         default:

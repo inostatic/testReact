@@ -6,6 +6,7 @@ const BD_SET_CURRENT_PAGE = 'BD_SET-CURRENT-PAGE';
 
 let initialState = {
     BD: [],
+    fullData: [],
     newTextInput: {
         input_id: '',
         input_firstName: '',
@@ -39,6 +40,7 @@ const BDReducer = (state = initialState, action) => {
             return {
                 ...state,
                 BD: [newRow,...state.BD],
+                fullData: [newRow,...state.fullData],
                 newTextInput: newTextInput,
             };
         }
@@ -56,15 +58,21 @@ const BDReducer = (state = initialState, action) => {
             }
         }
         case BD_SET_POSTS: {
+            let partPost = action.BD.slice(state.currentPage - 1, state.pageSize);
             return {
                 ...state,
-                BD: [ ...state.BD, ...action.BD ]
+                BD: partPost,
+                fullData: [...state.fullData, ...action.BD],
             }
         }
         case BD_SET_CURRENT_PAGE: {
+            let start = (action.currentPage - 1) * state.pageSize;
+            let end = action.currentPage * state.pageSize;
+            let partPost = state.fullData.slice(start, end);
             return {
                 ...state,
                 currentPage: action.currentPage,
+                BD: partPost,
             }
         }
         default:
