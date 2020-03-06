@@ -2,7 +2,7 @@ import React from "react";
 import '../Table.css';
 import Post from "./Post";
 import {connect} from "react-redux";
-import {setSmallDataPostActionCreator} from "../../../redux/SD-reducer";
+import {setSmallDataCurrentPageActionCreator, setSmallDataPostActionCreator} from "../../../redux/SD-reducer";
 
 
 
@@ -19,11 +19,16 @@ let mapStateToProps = (state) => {
             "phone={phone|(xxx)xxx-xx-xx}&" +
             "address={addressObject}&" +
             "description={lorem|32}",
+        pageSize: state.smallData.pageSize,
+        totalPostCount: state.smallData.totalPostCount,
+        currentPage: state.smallData.currentPage,
+
     }
 }
 let MapDispatchToProps = (dispatch) => {
     return {
-    setPostActionCreator: (SD) => dispatch(setSmallDataPostActionCreator(SD)),
+        setPostActionCreator: (SD) => dispatch(setSmallDataPostActionCreator(SD)),
+        setCurrentPage: (pageNumber) => dispatch(setSmallDataCurrentPageActionCreator(pageNumber)),
     }
 }
 

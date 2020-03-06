@@ -1,6 +1,7 @@
 import React from "react";
 import '../Table.css';
 import * as axios from 'axios';
+import styles from './Post.module.css';
 
 
 class Post extends React.Component {
@@ -10,26 +11,30 @@ class Post extends React.Component {
         })
     }
     render() {
+        let pagesCount = Math.ceil(this.props.totalPostCount / this.props.pageSize);
+        let pages = [];
+        for(let i = 1; i <= pagesCount; i++) {
+            pages.push(i);
+        }
+
+
         return (
             <div>
-                <span>1</span>
-                <span>2</span>
-                <span>3</span>
-                <span>4</span>
-                <span>5</span>
+                {pages.map(p =>  <span className={this.props.currentPage === p ? styles.selectedPage : styles.normalPage}
+                 onClick={() => {this.props.setCurrentPage(p) }}>{p}</span>)}
                 {
-            this.props.posts.map((str, key) => {
-                    return (
-                        <div className="tr">
-                            <span id={key}>{str.id}</span>
-                            <span>{str.firstName}</span>
-                            <span>{str.lastName}</span>
-                            <span>{str.email}</span>
-                            <span>{str.phone}</span>
-                        </div>
-                    )
-                }
-            )}
+                    this.props.posts.map((str, key) => {
+                            return (
+                                <div className="tr">
+                                    <span id={key}>{str.id}</span>
+                                    <span>{str.firstName}</span>
+                                    <span>{str.lastName}</span>
+                                    <span>{str.email}</span>
+                                    <span>{str.phone}</span>
+                                </div>
+                            )
+                        }
+                    )}
             </div>
         )
     }

@@ -1,0 +1,9 @@
+.selectedPage {
+    font-weight: bold;
+    color: gold;
+
+
+}
+.normalPage {
+    cursor: pointer;
+}
