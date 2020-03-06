@@ -4,13 +4,11 @@ import * as axios from 'axios';
 
 
 class Post extends React.Component {
-    constructor(props) {
-        super(props);
+    componentDidMount() {
         axios.get(this.props.URL).then(response => {
             this.props.setPostActionCreator(response.data);
         })
     }
-
     render() {
         return (
             this.props.posts.map((str, key) => {
@@ -22,7 +20,6 @@ class Post extends React.Component {
                             <span>{str.email}</span>
                             <span>{str.phone}</span>
                         </div>
-
                     )
                 }
             )
