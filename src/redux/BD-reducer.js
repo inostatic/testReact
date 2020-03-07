@@ -39,7 +39,7 @@ const BDReducer = (state = initialState, action) => {
             };
             return {
                 ...state,
-                BD: [newRow,...state.BD],
+                // BD: [newRow,...state.BD],
                 fullData: [newRow,...state.fullData],
                 newTextInput: newTextInput,
             };

@@ -3,9 +3,29 @@ import '../Table.css';
 import Post from "./Post";
 import {connect} from "react-redux";
 import {setBigDataCurrentPageActionCreator, setBigDataPostActionCreator} from "../../../redux/BD-reducer";
+import * as axios from "axios";
 
 
+class BDPostCont extends React.Component {
+    componentDidMount() {
+        axios.get(this.props.URL).then(response => {
+            this.props.setPostActionCreator(response.data);
+        })
+    }
+    render() {
+        let pagesCount = Math.ceil(this.props.totalPostCount / this.props.pageSize);
+        let pages = [];
+        for(let i = 1; i <= pagesCount; i++) {
+            pages.push(i);
+        }
 
+        return (
+            <Post posts={this.props.posts}
+                  currentPage={this.props.currentPage}
+                  pages={pages} setCurrentPage={this.props.setCurrentPage}/>
+        )
+    }
+}
 
 let mapStateToProps = (state) => {
     return {
@@ -30,7 +50,7 @@ let MapDispatchToProps = (dispatch) => {
     }
 }
 
-const BDPostContainer = connect(mapStateToProps, MapDispatchToProps)(Post);
+const BDPostContainer = connect(mapStateToProps, MapDispatchToProps)(BDPostCont);
 
 export default BDPostContainer;
 

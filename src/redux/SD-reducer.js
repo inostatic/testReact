@@ -41,7 +41,7 @@ const SDReducer = (state = initialState, action) => {
             return {
                 ...state,
                 fullData: [newRow,...state.fullData],
-                SD: [newRow,...state.SD],
+                // SD: [newRow,...state.SD],
                 newTextInput: newTextInput,
             };
         }
