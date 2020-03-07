@@ -8,7 +8,6 @@ const Smalldata = () => {
     return (
         <div className="th">
             <SDAddStringContainer />
-            <TableHeader/>
             <SDPostContainer />
 
 

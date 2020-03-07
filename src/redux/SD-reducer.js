@@ -5,6 +5,7 @@ const SD_SET_POSTS = 'SD_SET_POSTS';
 const SD_SET_CURRENT_PAGE = 'SD_SET_CURRENT_PAGE';
 const SD_DISPLAY_PRELOADER = 'SD_DISPLAY_PRELOADER';
 const SD_SINGLE_STRING = 'SD_SINGLE_STRING';
+const SD_SORT = 'SD_SORT';
 
 let initialState = {
     SD: [],
@@ -22,6 +23,7 @@ let initialState = {
     isFetching: false,
     stringId: null,
     singleString: {},
+    sort: null,
 
 }
 
@@ -46,8 +48,8 @@ const SDReducer = (state = initialState, action) => {
             return {
                 ...state,
                 fullData: [newRow,...state.fullData],
-                // SD: [newRow,...state.SD],
                 newTextInput: newTextInput,
+                currentPage: 1,
             };
         }
         case SD_UPDATE_INPUT_TEXT: {
@@ -95,6 +97,33 @@ const SDReducer = (state = initialState, action) => {
                 singleString: singleString,
             }
         }
+        case SD_SORT: {
+            let fullDataSortById, sort, column;
+            column = action.column;
+            if(state.sort === null || state.sort === 2) {
+                fullDataSortById = state.fullData.sort((prev, next) => {
+                    if ( prev[column] < next[column] ) return -1;
+                    if ( prev[column] < next[column] ) return 1;
+                });
+                sort = 1;
+            } else if(state.sort === 1) {
+                fullDataSortById = state.fullData.sort((prev, next) => {
+                    if ( prev[column] < next[column] ) return -1;
+                    if ( prev[column] < next[column] ) return 1;
+                }).reverse();
+                sort = 2;
+            }
+            let start = (state.currentPage - 1) * state.pageSize;
+            let end = state.currentPage * state.pageSize;
+            let partPost = fullDataSortById.slice(start, end);
+            return {
+                ...state,
+                fullData: fullDataSortById,
+                SD: partPost,
+                sort: sort,
+                currentPage: 1,
+            }
+        }
         default:
             return state;
     }
@@ -106,4 +135,5 @@ export const setSmallDataPostActionCreator = (SD) => ({type: SD_SET_POSTS, SD })
 export const setSmallDataCurrentPageActionCreator = (currentPage) => ({type: SD_SET_CURRENT_PAGE, currentPage });
 export const setSmallDataDisplayPreloader = (isFetching) => ({type: SD_DISPLAY_PRELOADER, isFetching });
 export const getSmallDataSingleString = (stringId) => ({type: SD_SINGLE_STRING, stringId });
+export const sortSmallDataActionCreator = (column) => ({type: SD_SORT, column  });
 export default SDReducer;

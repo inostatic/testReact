@@ -7,10 +7,9 @@
       <change beforePath="$PROJECT_DIR$/src/components/Table/Post/BDPostContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Post/BDPostContainer.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Table/Post/Post.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Post/Post.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Table/Post/SDPostContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Post/SDPostContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/SingleInfo/SingleInfo.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/SingleInfo/SingleInfo.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Table/SingleInfo/SingleInfo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/SingleInfo/SingleInfo.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Table/Smalldata.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Smalldata.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/Preloader/Preloader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Preloader/Preloader.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/TableHeader/TableHeader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/TableHeader/TableHeader.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/BD-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/BD-reducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/SD-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/SD-reducer.js" afterDir="false" />
     </list>
@@ -84,7 +83,7 @@
       <workItem from="1583343850958" duration="9153000" />
       <workItem from="1583402653581" duration="5953000" />
       <workItem from="1583486662623" duration="2578000" />
-      <workItem from="1583516945279" duration="25756000" />
+      <workItem from="1583516945279" duration="38266000" />
     </task>
     <servers />
   </component>
@@ -92,10 +91,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="690" y="272" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1583440429440">
+    <state x="690" y="272" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1583606727368">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="690" y="272" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1583440429440" />
+    <state x="690" y="272" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1583606727368" />
     <state width="1899" height="285" key="GridCell.Tab.0.bottom" timestamp="1583339986595">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -112,9 +111,9 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1899" height="285" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1583339986595" />
-    <state x="461" y="167" key="SettingsEditor" timestamp="1582920676042">
+    <state x="461" y="167" key="SettingsEditor" timestamp="1583608201789">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="461" y="167" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1582920676042" />
+    <state x="461" y="167" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1583608201789" />
   </component>
 </project>

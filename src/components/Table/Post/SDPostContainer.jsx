@@ -6,12 +6,13 @@ import {
     getSmallDataSingleString,
     setSmallDataCurrentPageActionCreator,
     setSmallDataDisplayPreloader,
-    setSmallDataPostActionCreator
+    setSmallDataPostActionCreator, sortSmallDataActionCreator,
 } from "../../../redux/SD-reducer";
 import * as axios from 'axios';
 import Preloader from "../../common/Preloader/Preloader";
 import SingleInfo from "../SingleInfo/SingleInfo";
 import Search from "../Search/Search";
+import TableHeader from "../TableHeader/TableHeader";
 
 
 class SDPostCont extends React.Component {
@@ -32,6 +33,7 @@ class SDPostCont extends React.Component {
 
         return (
             <>
+                <TableHeader sorting={this.props.sorting}/>
                 {this.props.isFetching ? <Preloader/> : null}
                 <Post posts={this.props.posts}
                       currentPage={this.props.currentPage}
@@ -72,6 +74,7 @@ const SDPostContainer = connect(mapStateToProps, {
     setCurrentPage: setSmallDataCurrentPageActionCreator,
     setDisplayPreloader: setSmallDataDisplayPreloader,
     getSingleString: getSmallDataSingleString,
+    sorting: sortSmallDataActionCreator,
 })(SDPostCont);
 
 export default SDPostContainer;

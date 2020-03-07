@@ -8,7 +8,6 @@ const Bigdata = () => {
     return (
         <div className="th">
             <BdAddStringContainer />
-            <TableHeader/>
             <BDPostContainer />
 
 

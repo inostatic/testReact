@@ -1,10 +1,13 @@
 
+
 const BD_ADD_POST = 'BD_ADD_POST';
 const BD_UPDATE_INPUT_TEXT = 'BD_UPDATE_INPUT_TEXT';
 const BD_SET_POSTS = 'BD_SET_POSTS';
 const BD_SET_CURRENT_PAGE = 'BD_SET_CURRENT_PAGE';
 const BD_DISPLAY_PRELOADER = 'BD_DISPLAY_PRELOADER';
 const BD_SINGLE_STRING = 'BD_SINGLE_STRING';
+const BD_SORT = 'BD_SORT';
+const BD_SEARCH = 'BD_SEARCH';
 
 let initialState = {
     BD: [],
@@ -22,6 +25,7 @@ let initialState = {
     isFetching: false,
     stringId: null,
     singleString: {},
+    sort: null,
 }
 
 
@@ -44,9 +48,9 @@ const BDReducer = (state = initialState, action) => {
             };
             return {
                 ...state,
-                // BD: [newRow,...state.BD],
                 fullData: [newRow,...state.fullData],
                 newTextInput: newTextInput,
+                currentPage: 1,
             };
         }
         case BD_UPDATE_INPUT_TEXT: {
@@ -94,6 +98,36 @@ const BDReducer = (state = initialState, action) => {
                 singleString: singleString,
             }
         }
+
+        case BD_SORT: {
+            let fullDataSortById, sort, column;
+            column = action.column;
+            if(state.sort === null || state.sort === 2) {
+                fullDataSortById = state.fullData.sort((prev, next) => {
+                    if ( prev[column] < next[column] ) return -1;
+                    if ( prev[column] < next[column] ) return 1;
+                });
+                sort = 1;
+            } else if(state.sort === 1) {
+                fullDataSortById = state.fullData.sort((prev, next) => {
+                    if ( prev[column] < next[column] ) return -1;
+                    if ( prev[column] < next[column] ) return 1;
+                }).reverse();
+                sort = 2;
+            }
+            let start = (state.currentPage - 1) * state.pageSize;
+            let end = state.currentPage * state.pageSize;
+            let partPost = fullDataSortById.slice(start, end);
+            return {
+                ...state,
+                fullData: fullDataSortById,
+                BD: partPost,
+                sort: sort,
+            }
+        }
+        case BD_SEARCH: {
+
+        }
         default:
             return state;
     }
@@ -105,4 +139,6 @@ export const setBigDataPostActionCreator = (BD) => ({type: BD_SET_POSTS, BD });
 export const setBigDataCurrentPageActionCreator = (currentPage) => ({type: BD_SET_CURRENT_PAGE, currentPage });
 export const setBigDataDisplayPreloader = (isFetching) => ({type: BD_DISPLAY_PRELOADER, isFetching });
 export const getBigDataSingleString = (stringId) => ({type: BD_SINGLE_STRING, stringId });
+export const sortBigDataActionCreator = (column) => ({type: BD_SORT, column  });
+export const filterBigDataActionCreator = (column) => ({type: BD_SORT, column  });
 export default BDReducer;
