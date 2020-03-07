@@ -7,6 +7,7 @@ import styles from './Post.module.css';
 
 const Post = (props) => {
 
+
     return (
             <div>
                 {props.pages.map(p =>  <span className={props.currentPage === p ? styles.selectedPage : styles.normalPage}
@@ -15,11 +16,11 @@ const Post = (props) => {
                     props.posts.map((str, key) => {
                             return (
                                 <div className="tr">
-                                    <span id={key}>{str.id}</span>
-                                    <span>{str.firstName}</span>
-                                    <span>{str.lastName}</span>
-                                    <span>{str.email}</span>
-                                    <span>{str.phone}</span>
+                                    <span id={key} onClick={() => {props.getSingleString(str.id) }}>{str.id}</span>
+                                    <span id={key}>{str.firstName}</span>
+                                    <span id={key}>{str.lastName}</span>
+                                    <span id={key}>{str.email}</span>
+                                    <span id={key}>{str.phone}</span>
                                 </div>
                             )
                         }

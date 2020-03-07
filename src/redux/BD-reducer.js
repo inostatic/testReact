@@ -4,6 +4,7 @@ const BD_UPDATE_INPUT_TEXT = 'BD_UPDATE_INPUT_TEXT';
 const BD_SET_POSTS = 'BD_SET_POSTS';
 const BD_SET_CURRENT_PAGE = 'BD_SET_CURRENT_PAGE';
 const BD_DISPLAY_PRELOADER = 'BD_DISPLAY_PRELOADER';
+const BD_SINGLE_STRING = 'BD_SINGLE_STRING';
 
 let initialState = {
     BD: [],
@@ -19,6 +20,8 @@ let initialState = {
     totalPostCount: 1000,
     currentPage: 1,
     isFetching: false,
+    stringId: null,
+    singleString: {},
 }
 
 
@@ -83,6 +86,14 @@ const BDReducer = (state = initialState, action) => {
                 isFetching: action.isFetching,
             }
         }
+        case BD_SINGLE_STRING: {
+            let singleString = state.fullData.find( string => string.id === action.stringId);
+            return {
+                ...state,
+                stringId: action.stringId,
+                singleString: singleString,
+            }
+        }
         default:
             return state;
     }
@@ -93,4 +104,5 @@ export const updateBigDataPostActionCreator = (newText) => ({type: BD_UPDATE_INP
 export const setBigDataPostActionCreator = (BD) => ({type: BD_SET_POSTS, BD });
 export const setBigDataCurrentPageActionCreator = (currentPage) => ({type: BD_SET_CURRENT_PAGE, currentPage });
 export const setBigDataDisplayPreloader = (isFetching) => ({type: BD_DISPLAY_PRELOADER, isFetching });
+export const getBigDataSingleString = (stringId) => ({type: BD_SINGLE_STRING, stringId });
 export default BDReducer;

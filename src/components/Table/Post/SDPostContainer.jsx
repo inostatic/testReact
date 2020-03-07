@@ -3,12 +3,15 @@ import '../Table.css';
 import Post from "./Post";
 import {connect} from "react-redux";
 import {
+    getSmallDataSingleString,
     setSmallDataCurrentPageActionCreator,
     setSmallDataDisplayPreloader,
     setSmallDataPostActionCreator
 } from "../../../redux/SD-reducer";
 import * as axios from 'axios';
 import Preloader from "../../common/Preloader/Preloader";
+import SingleInfo from "../SingleInfo/SingleInfo";
+import Search from "../Search/Search";
 
 
 class SDPostCont extends React.Component {
@@ -32,7 +35,11 @@ class SDPostCont extends React.Component {
                 {this.props.isFetching ? <Preloader/> : null}
                 <Post posts={this.props.posts}
                       currentPage={this.props.currentPage}
-                      pages={pages} setCurrentPage={this.props.setCurrentPage}/>
+                      pages={pages}
+                      setCurrentPage={this.props.setCurrentPage}
+                      getSingleString={this.props.getSingleString}/>
+                <Search/>
+                {this.props.stringId !== null ? <SingleInfo singleString={this.props.singleString} /> : null}
             </>
         )
     }
@@ -53,6 +60,8 @@ let mapStateToProps = (state) => {
         totalPostCount: state.smallData.totalPostCount,
         currentPage: state.smallData.currentPage,
         isFetching: state.smallData.isFetching,
+        stringId: state.smallData.stringId,
+        singleString: state.smallData.singleString,
 
     }
 }
@@ -62,6 +71,7 @@ const SDPostContainer = connect(mapStateToProps, {
     setPostActionCreator: setSmallDataPostActionCreator,
     setCurrentPage: setSmallDataCurrentPageActionCreator,
     setDisplayPreloader: setSmallDataDisplayPreloader,
+    getSingleString: getSmallDataSingleString,
 })(SDPostCont);
 
 export default SDPostContainer;

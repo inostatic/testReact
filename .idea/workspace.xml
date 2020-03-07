@@ -3,8 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="36bc88da-7db9-409e-bd10-07fe8919b29a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/Bigdata.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Bigdata.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Table/Post/BDPostContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Post/BDPostContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/Post/Post.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Post/Post.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Table/Post/SDPostContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Post/SDPostContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/SingleInfo/SingleInfo.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/SingleInfo/SingleInfo.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/SingleInfo/SingleInfo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/SingleInfo/SingleInfo.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/Smalldata.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Smalldata.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Preloader/Preloader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Preloader/Preloader.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/BD-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/BD-reducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/SD-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/SD-reducer.js" afterDir="false" />
     </list>
@@ -28,25 +34,25 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/Table/Post" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/Table/SingleInfo" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
     <property name="ts.external.directory.path" value="D:\OSPanel\domains\testReact\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\OSPanel\domains\testReact\src\components\Table\SingleInfo" />
+      <recent name="D:\OSPanel\domains\testReact\src\components\Table\Post" />
+      <recent name="D:\OSPanel\domains\testReact\src\components\Table\AddString" />
+      <recent name="C:\OSPanel\domains\react\project\02-first-project\src\components\Table\Post" />
+      <recent name="C:\OSPanel\domains\react\project\02-first-project\src\components\Table\AddString" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\OSPanel\domains\testReact\src\redux\data" />
       <recent name="D:\OSPanel\domains\react\my-app\src\components\Table" />
       <recent name="D:\OSPanel\domains\react\my-app\src\components\Table\TableHeader" />
       <recent name="D:\OSPanel\domains\react\my-app\src\components\Table\Data" />
       <recent name="D:\OSPanel\domains\react\my-app\src\components\Header" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\OSPanel\domains\testReact\src\components\Table\Post" />
-      <recent name="D:\OSPanel\domains\testReact\src\components\Table\AddString" />
-      <recent name="C:\OSPanel\domains\react\project\02-first-project\src\components\Table\Post" />
-      <recent name="C:\OSPanel\domains\react\project\02-first-project\src\components\Table\AddString" />
-      <recent name="D:\OSPanel\domains\testReact\src\redux" />
     </key>
   </component>
   <component name="RunManager">
@@ -78,7 +84,7 @@
       <workItem from="1583343850958" duration="9153000" />
       <workItem from="1583402653581" duration="5953000" />
       <workItem from="1583486662623" duration="2578000" />
-      <workItem from="1583516945279" duration="19226000" />
+      <workItem from="1583516945279" duration="25756000" />
     </task>
     <servers />
   </component>

@@ -4,6 +4,7 @@ const SD_UPDATE_INPUT_TEXT = 'SD_UPDATE_INPUT_TEXT';
 const SD_SET_POSTS = 'SD_SET_POSTS';
 const SD_SET_CURRENT_PAGE = 'SD_SET_CURRENT_PAGE';
 const SD_DISPLAY_PRELOADER = 'SD_DISPLAY_PRELOADER';
+const SD_SINGLE_STRING = 'SD_SINGLE_STRING';
 
 let initialState = {
     SD: [],
@@ -19,6 +20,8 @@ let initialState = {
     totalPostCount: 32,
     currentPage: 1,
     isFetching: false,
+    stringId: null,
+    singleString: {},
 
 }
 
@@ -84,6 +87,14 @@ const SDReducer = (state = initialState, action) => {
                 isFetching: action.isFetching,
             }
         }
+        case SD_SINGLE_STRING: {
+            let singleString = state.fullData.find( string => string.id === action.stringId);
+            return {
+                ...state,
+                stringId: action.stringId,
+                singleString: singleString,
+            }
+        }
         default:
             return state;
     }
@@ -94,4 +105,5 @@ export const updateSmallDataPostActionCreator = (newText) => ({type: SD_UPDATE_I
 export const setSmallDataPostActionCreator = (SD) => ({type: SD_SET_POSTS, SD });
 export const setSmallDataCurrentPageActionCreator = (currentPage) => ({type: SD_SET_CURRENT_PAGE, currentPage });
 export const setSmallDataDisplayPreloader = (isFetching) => ({type: SD_DISPLAY_PRELOADER, isFetching });
+export const getSmallDataSingleString = (stringId) => ({type: SD_SINGLE_STRING, stringId });
 export default SDReducer;
