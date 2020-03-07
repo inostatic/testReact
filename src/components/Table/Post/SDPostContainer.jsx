@@ -6,7 +6,7 @@ import {
     getSmallDataSingleString,
     setSmallDataCurrentPageActionCreator,
     setSmallDataDisplayPreloader,
-    setSmallDataPostActionCreator, sortSmallDataActionCreator,
+    setSmallDataPostActionCreator, setSmallDataTotalPostCount, sortSmallDataActionCreator,
 } from "../../../redux/SD-reducer";
 import * as axios from 'axios';
 import Preloader from "../../common/Preloader/Preloader";
@@ -15,12 +15,14 @@ import Search from "../Search/Search";
 import TableHeader from "../TableHeader/TableHeader";
 
 
+
 class SDPostCont extends React.Component {
     componentDidMount() {
         this.props.setDisplayPreloader(true);
         axios.get(this.props.URL).then(response => {
             this.props.setDisplayPreloader(false);
             this.props.setPostActionCreator(response.data);
+            this.props.setTotalPostCount(response.data.length);
         })
     }
 
@@ -75,6 +77,7 @@ const SDPostContainer = connect(mapStateToProps, {
     setDisplayPreloader: setSmallDataDisplayPreloader,
     getSingleString: getSmallDataSingleString,
     sorting: sortSmallDataActionCreator,
+    setTotalPostCount: setSmallDataTotalPostCount,
 })(SDPostCont);
 
 export default SDPostContainer;

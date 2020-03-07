@@ -6,7 +6,7 @@ import {
     getBigDataSingleString,
     setBigDataCurrentPageActionCreator,
     setBigDataDisplayPreloader,
-    setBigDataPostActionCreator, sortBigDataActionCreator,
+    setBigDataPostActionCreator, setBigDataTotalPostCount, sortBigDataActionCreator,
 } from "../../../redux/BD-reducer";
 import * as axios from "axios";
 import Preloader from "../../common/Preloader/Preloader";
@@ -22,6 +22,7 @@ class BDPostCont extends React.Component {
         axios.get(this.props.URL).then(response => {
             this.props.setDisplayPreloader(false);
             this.props.setPostActionCreator(response.data);
+            this.props.setTotalPostCount(response.data.length);
         })
     }
 
@@ -31,7 +32,6 @@ class BDPostCont extends React.Component {
         for (let i = 1; i <= pagesCount; i++) {
             pages.push(i);
         }
-        debugger;
         return (
             <>
                 <TableHeader sorting={this.props.sorting}/>
@@ -74,6 +74,7 @@ const BDPostContainer = connect(mapStateToProps, {
     setDisplayPreloader: setBigDataDisplayPreloader,
     getSingleString: getBigDataSingleString,
     sorting: sortBigDataActionCreator,
+    setTotalPostCount: setBigDataTotalPostCount,
 
 })(BDPostCont);
 

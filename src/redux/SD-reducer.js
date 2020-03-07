@@ -6,6 +6,7 @@ const SD_SET_CURRENT_PAGE = 'SD_SET_CURRENT_PAGE';
 const SD_DISPLAY_PRELOADER = 'SD_DISPLAY_PRELOADER';
 const SD_SINGLE_STRING = 'SD_SINGLE_STRING';
 const SD_SORT = 'SD_SORT';
+const SD_SET_TOTAL_POST_COUNT = 'SD_SET_TOTAL_POST_COUNT';
 
 let initialState = {
     SD: [],
@@ -18,7 +19,7 @@ let initialState = {
         input_phone: '',
     },
     pageSize: 50,
-    totalPostCount: 32,
+    totalPostCount: null,
     currentPage: 1,
     isFetching: false,
     stringId: null,
@@ -45,12 +46,23 @@ const SDReducer = (state = initialState, action) => {
                 input_email: '',
                 input_phone: '',
             };
+            let start = (state.currentPage - 1) * state.pageSize;
+            let end = state.currentPage * state.pageSize;
+            let partPost = state.fullData.slice(start, end - 1);
             return {
                 ...state,
                 fullData: [newRow,...state.fullData],
                 newTextInput: newTextInput,
                 currentPage: 1,
+                SD: [newRow, ...partPost],
+                totalPostCount: state.totalPostCount + 1,
             };
+        }
+        case SD_SET_TOTAL_POST_COUNT: {
+            return {
+                ...state,
+                totalPostCount: action.count,
+            }
         }
         case SD_UPDATE_INPUT_TEXT: {
             let newTextInput = {
@@ -136,4 +148,5 @@ export const setSmallDataCurrentPageActionCreator = (currentPage) => ({type: SD_
 export const setSmallDataDisplayPreloader = (isFetching) => ({type: SD_DISPLAY_PRELOADER, isFetching });
 export const getSmallDataSingleString = (stringId) => ({type: SD_SINGLE_STRING, stringId });
 export const sortSmallDataActionCreator = (column) => ({type: SD_SORT, column  });
+export const setSmallDataTotalPostCount = (count) => ({type: SD_SET_TOTAL_POST_COUNT, count  });
 export default SDReducer;

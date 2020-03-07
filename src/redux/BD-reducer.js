@@ -8,6 +8,7 @@ const BD_DISPLAY_PRELOADER = 'BD_DISPLAY_PRELOADER';
 const BD_SINGLE_STRING = 'BD_SINGLE_STRING';
 const BD_SORT = 'BD_SORT';
 const BD_SEARCH = 'BD_SEARCH';
+const BD_SET_TOTAL_POST_COUNT = 'BD_SET_TOTAL_POST_COUNT';
 
 let initialState = {
     BD: [],
@@ -20,7 +21,7 @@ let initialState = {
         input_phone: '',
     },
     pageSize: 50,
-    totalPostCount: 1000,
+    totalPostCount: null,
     currentPage: 1,
     isFetching: false,
     stringId: null,
@@ -46,12 +47,24 @@ const BDReducer = (state = initialState, action) => {
                 input_email: '',
                 input_phone: '',
             };
+            let start = (state.currentPage - 1) * state.pageSize;
+            let end = state.currentPage * state.pageSize;
+            let partPost = state.fullData.slice(start, end - 1);
+
             return {
                 ...state,
                 fullData: [newRow,...state.fullData],
                 newTextInput: newTextInput,
                 currentPage: 1,
+                BD: [newRow, ...partPost],
+                totalPostCount: state.totalPostCount + 1,
             };
+        }
+        case BD_SET_TOTAL_POST_COUNT: {
+            return {
+                ...state,
+                totalPostCount: action.count,
+            }
         }
         case BD_UPDATE_INPUT_TEXT: {
             let newTextInput = {
@@ -140,5 +153,6 @@ export const setBigDataCurrentPageActionCreator = (currentPage) => ({type: BD_SE
 export const setBigDataDisplayPreloader = (isFetching) => ({type: BD_DISPLAY_PRELOADER, isFetching });
 export const getBigDataSingleString = (stringId) => ({type: BD_SINGLE_STRING, stringId });
 export const sortBigDataActionCreator = (column) => ({type: BD_SORT, column  });
-export const filterBigDataActionCreator = (column) => ({type: BD_SORT, column  });
+export const filterBigDataActionCreator = (substring) => ({type: BD_SORT, substring  });
+export const setBigDataTotalPostCount = (count) => ({type: BD_SET_TOTAL_POST_COUNT, count  });
 export default BDReducer;
