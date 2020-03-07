@@ -3,10 +3,11 @@ import '../Table.css';
 import Post from "./Post";
 import {connect} from "react-redux";
 import {
+    filterBigDataActionCreator,
     getBigDataSingleString,
     setBigDataCurrentPageActionCreator,
     setBigDataDisplayPreloader,
-    setBigDataPostActionCreator, setBigDataTotalPostCount, sortBigDataActionCreator,
+    setBigDataPostActionCreator, setBigDataTotalPostCount, sortBigDataActionCreator, updateBigDataSearchActionCreator,
 } from "../../../redux/BD-reducer";
 import * as axios from "axios";
 import Preloader from "../../common/Preloader/Preloader";
@@ -40,7 +41,9 @@ class BDPostCont extends React.Component {
                       currentPage={this.props.currentPage}
                       pages={pages} setCurrentPage={this.props.setCurrentPage}
                       getSingleString={this.props.getSingleString}/>
-                <Search/>
+                <Search filterActionCreator={this.props.filterActionCreator}
+                        updateSearchActionCreator={this.props.updateSearchActionCreator}
+                        searchInput={this.props.searchInput}/>
                 {this.props.stringId !== null ? <SingleInfo singleString={this.props.singleString} /> : null}
             </>
         )
@@ -64,6 +67,7 @@ let mapStateToProps = (state) => {
         isFetching: state.bigData.isFetching,
         stringId: state.bigData.stringId,
         singleString: state.bigData.singleString,
+        searchInput: state.bigData.searchInput,
     }
 }
 
@@ -75,6 +79,8 @@ const BDPostContainer = connect(mapStateToProps, {
     getSingleString: getBigDataSingleString,
     sorting: sortBigDataActionCreator,
     setTotalPostCount: setBigDataTotalPostCount,
+    filterActionCreator: filterBigDataActionCreator,
+    updateSearchActionCreator: updateBigDataSearchActionCreator,
 
 })(BDPostCont);
 

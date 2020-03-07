@@ -7,6 +7,9 @@ const SD_DISPLAY_PRELOADER = 'SD_DISPLAY_PRELOADER';
 const SD_SINGLE_STRING = 'SD_SINGLE_STRING';
 const SD_SORT = 'SD_SORT';
 const SD_SET_TOTAL_POST_COUNT = 'SD_SET_TOTAL_POST_COUNT';
+const SD_UPDATE_SEARCH_INPUT = 'SD_UPDATE_SEARCH_INPUT';
+const SD_SEARCH = 'SD_SEARCH';
+
 
 let initialState = {
     SD: [],
@@ -25,6 +28,7 @@ let initialState = {
     stringId: null,
     singleString: {},
     sort: null,
+    searchInput: '',
 
 }
 
@@ -136,6 +140,18 @@ const SDReducer = (state = initialState, action) => {
                 currentPage: 1,
             }
         }
+        case SD_UPDATE_SEARCH_INPUT: {
+            return {
+                ...state,
+                searchInput: action.newText,
+            }
+        }
+        case SD_SEARCH: {
+            let copyFullData = [...state.fullData];
+            let result = copyFullData.filter(elem => {
+                elem.firstName.indexOf(state.searchInput)
+            })
+        }
         default:
             return state;
     }
@@ -149,4 +165,6 @@ export const setSmallDataDisplayPreloader = (isFetching) => ({type: SD_DISPLAY_P
 export const getSmallDataSingleString = (stringId) => ({type: SD_SINGLE_STRING, stringId });
 export const sortSmallDataActionCreator = (column) => ({type: SD_SORT, column  });
 export const setSmallDataTotalPostCount = (count) => ({type: SD_SET_TOTAL_POST_COUNT, count  });
+export const updateSmallDataSearchActionCreator = (newText) => ({type: SD_UPDATE_SEARCH_INPUT, text: newText});
+export const filterSmallDataActionCreator = () => ({type: SD_SORT  });
 export default SDReducer;

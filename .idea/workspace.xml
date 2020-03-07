@@ -5,6 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Table/Post/BDPostContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Post/BDPostContainer.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Table/Post/SDPostContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Post/SDPostContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/Search/Search.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Search/Search.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/BD-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/BD-reducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/SD-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/SD-reducer.js" afterDir="false" />
     </list>
@@ -78,7 +79,7 @@
       <workItem from="1583343850958" duration="9153000" />
       <workItem from="1583402653581" duration="5953000" />
       <workItem from="1583486662623" duration="2578000" />
-      <workItem from="1583516945279" duration="42188000" />
+      <workItem from="1583516945279" duration="45167000" />
     </task>
     <servers />
   </component>
@@ -110,5 +111,9 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="461" y="167" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1583608201789" />
+    <state x="616" y="243" key="run.anything.popup" timestamp="1583620289490">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="616" y="243" key="run.anything.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1583620289490" />
   </component>
 </project>

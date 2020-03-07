@@ -9,6 +9,7 @@ const BD_SINGLE_STRING = 'BD_SINGLE_STRING';
 const BD_SORT = 'BD_SORT';
 const BD_SEARCH = 'BD_SEARCH';
 const BD_SET_TOTAL_POST_COUNT = 'BD_SET_TOTAL_POST_COUNT';
+const BD_UPDATE_SEARCH_INPUT = 'BD_UPDATE_SEARCH_INPUT';
 
 let initialState = {
     BD: [],
@@ -27,6 +28,7 @@ let initialState = {
     stringId: null,
     singleString: {},
     sort: null,
+    searchInput: '',
 }
 
 
@@ -138,13 +140,24 @@ const BDReducer = (state = initialState, action) => {
                 sort: sort,
             }
         }
+        case BD_UPDATE_SEARCH_INPUT: {
+            return {
+                ...state,
+                searchInput: action.newText,
+            }
+        }
         case BD_SEARCH: {
-
+           let copyFullData = [...state.fullData];
+           let result = copyFullData.filter(elem => {
+               elem.firstName.indexOf(state.searchInput)
+           })
         }
         default:
             return state;
     }
 }
+
+
 
 export const addBigDataPostActionCreator = () => ({type: BD_ADD_POST });
 export const updateBigDataPostActionCreator = (newText) => ({type: BD_UPDATE_INPUT_TEXT, text: newText});
@@ -153,6 +166,7 @@ export const setBigDataCurrentPageActionCreator = (currentPage) => ({type: BD_SE
 export const setBigDataDisplayPreloader = (isFetching) => ({type: BD_DISPLAY_PRELOADER, isFetching });
 export const getBigDataSingleString = (stringId) => ({type: BD_SINGLE_STRING, stringId });
 export const sortBigDataActionCreator = (column) => ({type: BD_SORT, column  });
-export const filterBigDataActionCreator = (substring) => ({type: BD_SORT, substring  });
 export const setBigDataTotalPostCount = (count) => ({type: BD_SET_TOTAL_POST_COUNT, count  });
+export const updateBigDataSearchActionCreator = (newText) => ({type: BD_UPDATE_SEARCH_INPUT, text: newText});
+export const filterBigDataActionCreator = () => ({type: BD_SORT  });
 export default BDReducer;

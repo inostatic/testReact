@@ -3,16 +3,21 @@ import '../Table.css';
 import Post from "./Post";
 import {connect} from "react-redux";
 import {
+    filterSmallDataActionCreator,
     getSmallDataSingleString,
     setSmallDataCurrentPageActionCreator,
     setSmallDataDisplayPreloader,
-    setSmallDataPostActionCreator, setSmallDataTotalPostCount, sortSmallDataActionCreator,
+    setSmallDataPostActionCreator,
+    setSmallDataTotalPostCount,
+    sortSmallDataActionCreator,
+    updateSmallDataSearchActionCreator,
 } from "../../../redux/SD-reducer";
 import * as axios from 'axios';
 import Preloader from "../../common/Preloader/Preloader";
 import SingleInfo from "../SingleInfo/SingleInfo";
 import Search from "../Search/Search";
 import TableHeader from "../TableHeader/TableHeader";
+
 
 
 
@@ -42,7 +47,9 @@ class SDPostCont extends React.Component {
                       pages={pages}
                       setCurrentPage={this.props.setCurrentPage}
                       getSingleString={this.props.getSingleString}/>
-                <Search/>
+                <Search filterActionCreator={this.props.filterActionCreator}
+                        updateSearchActionCreator={this.props.updateSearchActionCreator}
+                        searchInput={this.props.searchInput}/>
                 {this.props.stringId !== null ? <SingleInfo singleString={this.props.singleString} /> : null}
             </>
         )
@@ -66,6 +73,7 @@ let mapStateToProps = (state) => {
         isFetching: state.smallData.isFetching,
         stringId: state.smallData.stringId,
         singleString: state.smallData.singleString,
+        searchInput: state.smallData.searchInput,
 
     }
 }
@@ -78,6 +86,8 @@ const SDPostContainer = connect(mapStateToProps, {
     getSingleString: getSmallDataSingleString,
     sorting: sortSmallDataActionCreator,
     setTotalPostCount: setSmallDataTotalPostCount,
+    filterActionCreator: filterSmallDataActionCreator,
+    updateSearchActionCreator: updateSmallDataSearchActionCreator,
 })(SDPostCont);
 
 export default SDPostContainer;
