@@ -89,7 +89,7 @@ const SDReducer = (state = initialState, action) => {
     }
 }
 
-export const addSmallDataPostActionCreator = () => ({type: SD_ADD_POST, DB: "SD"});
+export const addSmallDataPostActionCreator = () => ({type: SD_ADD_POST });
 export const updateSmallDataPostActionCreator = (newText) => ({type: SD_UPDATE_INPUT_TEXT, text: newText});
 export const setSmallDataPostActionCreator = (SD) => ({type: SD_SET_POSTS, SD });
 export const setSmallDataCurrentPageActionCreator = (currentPage) => ({type: SD_SET_CURRENT_PAGE, currentPage });

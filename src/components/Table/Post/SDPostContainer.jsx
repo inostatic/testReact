@@ -11,7 +11,6 @@ import * as axios from 'axios';
 import Preloader from "../../common/Preloader/Preloader";
 
 
-
 class SDPostCont extends React.Component {
     componentDidMount() {
         this.props.setDisplayPreloader(true);
@@ -20,19 +19,20 @@ class SDPostCont extends React.Component {
             this.props.setPostActionCreator(response.data);
         })
     }
+
     render() {
         let pagesCount = Math.ceil(this.props.totalPostCount / this.props.pageSize);
         let pages = [];
-        for(let i = 1; i <= pagesCount; i++) {
+        for (let i = 1; i <= pagesCount; i++) {
             pages.push(i);
         }
 
         return (
             <>
-                {this.props.isFetching ? <Preloader /> : null}
-            <Post posts={this.props.posts}
-                  currentPage={this.props.currentPage}
-                  pages={pages} setCurrentPage={this.props.setCurrentPage}/>
+                {this.props.isFetching ? <Preloader/> : null}
+                <Post posts={this.props.posts}
+                      currentPage={this.props.currentPage}
+                      pages={pages} setCurrentPage={this.props.setCurrentPage}/>
             </>
         )
     }
@@ -56,15 +56,13 @@ let mapStateToProps = (state) => {
 
     }
 }
-let MapDispatchToProps = (dispatch) => {
-    return {
-        setPostActionCreator: (SD) => dispatch(setSmallDataPostActionCreator(SD)),
-        setCurrentPage: (pageNumber) => dispatch(setSmallDataCurrentPageActionCreator(pageNumber)),
-        setDisplayPreloader: (isFetching) => dispatch(setSmallDataDisplayPreloader(isFetching)),
-    }
-}
 
-const SDPostContainer = connect(mapStateToProps, MapDispatchToProps)(SDPostCont);
+
+const SDPostContainer = connect(mapStateToProps, {
+    setPostActionCreator: setSmallDataPostActionCreator,
+    setCurrentPage: setSmallDataCurrentPageActionCreator,
+    setDisplayPreloader: setSmallDataDisplayPreloader,
+})(SDPostCont);
 
 export default SDPostContainer;
 

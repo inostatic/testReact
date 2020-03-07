@@ -19,19 +19,20 @@ class BDPostCont extends React.Component {
             this.props.setPostActionCreator(response.data);
         })
     }
+
     render() {
         let pagesCount = Math.ceil(this.props.totalPostCount / this.props.pageSize);
         let pages = [];
-        for(let i = 1; i <= pagesCount; i++) {
+        for (let i = 1; i <= pagesCount; i++) {
             pages.push(i);
         }
 
         return (
             <>
-            {this.props.isFetching ? <Preloader/> : null}
-            <Post posts={this.props.posts}
-                  currentPage={this.props.currentPage}
-                  pages={pages} setCurrentPage={this.props.setCurrentPage}/>
+                {this.props.isFetching ? <Preloader/> : null}
+                <Post posts={this.props.posts}
+                      currentPage={this.props.currentPage}
+                      pages={pages} setCurrentPage={this.props.setCurrentPage}/>
             </>
         )
     }
@@ -54,15 +55,13 @@ let mapStateToProps = (state) => {
         isFetching: state.bigData.isFetching,
     }
 }
-let MapDispatchToProps = (dispatch) => {
-    return {
-        setPostActionCreator: (BD) => dispatch(setBigDataPostActionCreator(BD)),
-        setCurrentPage: (pageNumber) => dispatch(setBigDataCurrentPageActionCreator(pageNumber)),
-        setDisplayPreloader: (isFetching) => dispatch(setBigDataDisplayPreloader(isFetching))
-    }
-}
 
-const BDPostContainer = connect(mapStateToProps, MapDispatchToProps)(BDPostCont);
+
+const BDPostContainer = connect(mapStateToProps, {
+    setPostActionCreator: setBigDataPostActionCreator,
+    setCurrentPage: setBigDataCurrentPageActionCreator,
+    setDisplayPreloader: setBigDataDisplayPreloader,
+})(BDPostCont);
 
 export default BDPostContainer;
 

@@ -88,7 +88,7 @@ const BDReducer = (state = initialState, action) => {
     }
 }
 
-export const addBigDataPostActionCreator = () => ({type: BD_ADD_POST, DB: "BD"});
+export const addBigDataPostActionCreator = () => ({type: BD_ADD_POST });
 export const updateBigDataPostActionCreator = (newText) => ({type: BD_UPDATE_INPUT_TEXT, text: newText});
 export const setBigDataPostActionCreator = (BD) => ({type: BD_SET_POSTS, BD });
 export const setBigDataCurrentPageActionCreator = (currentPage) => ({type: BD_SET_CURRENT_PAGE, currentPage });
