@@ -2,13 +2,20 @@ import React from "react";
 import '../Table.css';
 import Post from "./Post";
 import {connect} from "react-redux";
-import {setBigDataCurrentPageActionCreator, setBigDataPostActionCreator} from "../../../redux/BD-reducer";
+import {
+    setBigDataCurrentPageActionCreator,
+    setBigDataDisplayPreloader,
+    setBigDataPostActionCreator
+} from "../../../redux/BD-reducer";
 import * as axios from "axios";
+import Preloader from "../../common/Preloader/Preloader";
 
 
 class BDPostCont extends React.Component {
     componentDidMount() {
+        this.props.setDisplayPreloader(true);
         axios.get(this.props.URL).then(response => {
+            this.props.setDisplayPreloader(false);
             this.props.setPostActionCreator(response.data);
         })
     }
@@ -20,9 +27,12 @@ class BDPostCont extends React.Component {
         }
 
         return (
+            <>
+            {this.props.isFetching ? <Preloader/> : null}
             <Post posts={this.props.posts}
                   currentPage={this.props.currentPage}
                   pages={pages} setCurrentPage={this.props.setCurrentPage}/>
+            </>
         )
     }
 }
@@ -41,12 +51,14 @@ let mapStateToProps = (state) => {
         pageSize: state.bigData.pageSize,
         totalPostCount: state.bigData.totalPostCount,
         currentPage: state.bigData.currentPage,
+        isFetching: state.bigData.isFetching,
     }
 }
 let MapDispatchToProps = (dispatch) => {
     return {
         setPostActionCreator: (BD) => dispatch(setBigDataPostActionCreator(BD)),
         setCurrentPage: (pageNumber) => dispatch(setBigDataCurrentPageActionCreator(pageNumber)),
+        setDisplayPreloader: (isFetching) => dispatch(setBigDataDisplayPreloader(isFetching))
     }
 }
 

@@ -1,8 +1,9 @@
 
-const SD_ADD_POST = 'SD-ADD-POST';
-const SD_UPDATE_INPUT_TEXT = 'SD-UPDATE-INPUT-TEXT';
-const SD_SET_POSTS = 'SD_SET-POSTS';
-const SD_SET_CURRENT_PAGE = 'SD_SET-CURRENT-PAGE';
+const SD_ADD_POST = 'SD_ADD_POST';
+const SD_UPDATE_INPUT_TEXT = 'SD_UPDATE_INPUT_TEXT';
+const SD_SET_POSTS = 'SD_SET_POSTS';
+const SD_SET_CURRENT_PAGE = 'SD_SET_CURRENT_PAGE';
+const SD_DISPLAY_PRELOADER = 'SD_DISPLAY_PRELOADER';
 
 let initialState = {
     SD: [],
@@ -17,6 +18,7 @@ let initialState = {
     pageSize: 50,
     totalPostCount: 32,
     currentPage: 1,
+    isFetching: false,
 
 }
 
@@ -76,6 +78,12 @@ const SDReducer = (state = initialState, action) => {
                 SD: partPost,
             }
         }
+        case SD_DISPLAY_PRELOADER: {
+            return {
+                ...state,
+                isFetching: action.isFetching,
+            }
+        }
         default:
             return state;
     }
@@ -85,4 +93,5 @@ export const addSmallDataPostActionCreator = () => ({type: SD_ADD_POST, DB: "SD"
 export const updateSmallDataPostActionCreator = (newText) => ({type: SD_UPDATE_INPUT_TEXT, text: newText});
 export const setSmallDataPostActionCreator = (SD) => ({type: SD_SET_POSTS, SD });
 export const setSmallDataCurrentPageActionCreator = (currentPage) => ({type: SD_SET_CURRENT_PAGE, currentPage });
+export const setSmallDataDisplayPreloader = (isFetching) => ({type: SD_DISPLAY_PRELOADER, isFetching });
 export default SDReducer;

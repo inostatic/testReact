@@ -4,8 +4,9 @@
     <list default="true" id="36bc88da-7db9-409e-bd10-07fe8919b29a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Table/Post/BDPostContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Post/BDPostContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/Post/Post.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Post/Post.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Table/Post/SDPostContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Post/SDPostContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/BD-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/BD-reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/SD-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/SD-reducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +78,7 @@
       <workItem from="1583343850958" duration="9153000" />
       <workItem from="1583402653581" duration="5953000" />
       <workItem from="1583486662623" duration="2578000" />
-      <workItem from="1583516945279" duration="14158000" />
+      <workItem from="1583516945279" duration="18210000" />
     </task>
     <servers />
   </component>

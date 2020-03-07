@@ -2,14 +2,21 @@ import React from "react";
 import '../Table.css';
 import Post from "./Post";
 import {connect} from "react-redux";
-import {setSmallDataCurrentPageActionCreator, setSmallDataPostActionCreator} from "../../../redux/SD-reducer";
+import {
+    setSmallDataCurrentPageActionCreator,
+    setSmallDataDisplayPreloader,
+    setSmallDataPostActionCreator
+} from "../../../redux/SD-reducer";
 import * as axios from 'axios';
+import Preloader from "../../common/Preloader/Preloader";
 
 
 
 class SDPostCont extends React.Component {
     componentDidMount() {
+        this.props.setDisplayPreloader(true);
         axios.get(this.props.URL).then(response => {
+            this.props.setDisplayPreloader(false);
             this.props.setPostActionCreator(response.data);
         })
     }
@@ -21,9 +28,12 @@ class SDPostCont extends React.Component {
         }
 
         return (
+            <>
+                {this.props.isFetching ? <Preloader /> : null}
             <Post posts={this.props.posts}
                   currentPage={this.props.currentPage}
                   pages={pages} setCurrentPage={this.props.setCurrentPage}/>
+            </>
         )
     }
 }
@@ -42,6 +52,7 @@ let mapStateToProps = (state) => {
         pageSize: state.smallData.pageSize,
         totalPostCount: state.smallData.totalPostCount,
         currentPage: state.smallData.currentPage,
+        isFetching: state.smallData.isFetching,
 
     }
 }
@@ -49,6 +60,7 @@ let MapDispatchToProps = (dispatch) => {
     return {
         setPostActionCreator: (SD) => dispatch(setSmallDataPostActionCreator(SD)),
         setCurrentPage: (pageNumber) => dispatch(setSmallDataCurrentPageActionCreator(pageNumber)),
+        setDisplayPreloader: (isFetching) => dispatch(setSmallDataDisplayPreloader(isFetching)),
     }
 }
 
