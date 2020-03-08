@@ -3,9 +3,9 @@ import preloader from '../../../assets/images/preloader.svg';
 import './preloader.css';
 const Preloader = () => {
     return (
-        <div className="preload" style={{backgroundColor: '#f1f2f3'}}>
+        <span className="preload" >
             <img src={preloader} />
-        </div>
+        </span>
     )
 }
 

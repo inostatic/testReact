@@ -1,3 +1,6 @@
+import {getSmallDataAxios} from "../API/API";
+
+
 const SD_ADD_POST = 'SD_ADD_POST';
 const SD_UPDATE_INPUT_TEXT = 'SD_UPDATE_INPUT_TEXT';
 const SD_SET_POSTS = 'SD_SET_POSTS';
@@ -196,4 +199,15 @@ export const sortSmallDataActionCreator = (column) => ({type: SD_SORT, column  }
 export const setSmallDataTotalPostCount = (count) => ({type: SD_SET_TOTAL_POST_COUNT, count  });
 export const updateSmallDataSearchActionCreator = (newText) => ({type: SD_UPDATE_SEARCH_INPUT, text: newText});
 export const filterSmallDataActionCreator = () => ({type: SD_SEARCH  });
+
+export const SmallDataGetPostsThunkCreator = () => {
+    return (dispatch) => {
+        dispatch(setSmallDataDisplayPreloader(true));
+        getSmallDataAxios().then(response => {
+            dispatch(setSmallDataDisplayPreloader(false));
+            dispatch(setSmallDataPostActionCreator(response.data));
+            dispatch(setSmallDataTotalPostCount(response.data.length));
+        })
+    }
+}
 export default SDReducer;

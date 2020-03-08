@@ -26,10 +26,10 @@ const AddString = (props) => {
 
 
     return (
-        <span>
+        <div>
             <input type="checkbox" id="hd-1" className="hide"/>
             <label htmlFor="hd-1" >Открыть форму</label>
-            <div className="form" >
+            <span className="form" >
                 <span>id </span>
                 <input type="text" ref={id} onChange={onFormChange} value={props.newTextInput.input_id} />
                 <span>firstName </span>
@@ -41,8 +41,8 @@ const AddString = (props) => {
                 <span>phone </span>
                 <input type="text" ref={phone} onChange={onFormChange} value={props.newTextInput.input_phone} />
                 <span><button onClick={addForm}>Добавить</button></span>
-            </div>
-        </span>
+            </span>
+        </div>
     )
 }
 

@@ -1,3 +1,5 @@
+import {getBigDataAxios} from "../API/API";
+
 const BD_ADD_POST = 'BD_ADD_POST';
 const BD_UPDATE_INPUT_TEXT = 'BD_UPDATE_INPUT_TEXT';
 const BD_SET_POSTS = 'BD_SET_POSTS';
@@ -198,4 +200,16 @@ export const sortBigDataActionCreator = (column) => ({type: BD_SORT, column  });
 export const setBigDataTotalPostCount = (count) => ({type: BD_SET_TOTAL_POST_COUNT, count  });
 export const updateBigDataSearchActionCreator = (newText) => ({type: BD_UPDATE_SEARCH_INPUT, text: newText});
 export const filterBigDataActionCreator = () => ({type: BD_SEARCH  });
+
+export const BigDataGetPostsThunkCreator = () => {
+    return (dispatch) => {
+        dispatch(setBigDataDisplayPreloader(true));
+        getBigDataAxios().then(response => {
+            dispatch(setBigDataDisplayPreloader(false));
+            dispatch(setBigDataPostActionCreator(response.data));
+            dispatch(setBigDataTotalPostCount(response.data.length));
+        })
+    }
+}
+
 export default BDReducer;

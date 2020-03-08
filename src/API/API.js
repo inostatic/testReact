@@ -1,9 +1,25 @@
 import axios, {AxiosResponse} from "axios";
-import {ProfileType} from '../types/types';
 
-const instance = axios.create({
-    withCredentials: true,
-    baseURL: 'http://www.filltext.com/',
-});
 
-const BD_API = {};
+export const getSmallDataAxios = () => {
+   return axios.get('http://www.filltext.com/?rows=32&' +
+        'id={number|1000}&firstName={firstName}&' +
+        'lastName={lastName}&' +
+        'email={email}&' +
+        'phone={phone|(xxx)xxx-xx-xx}&' +
+        'address={addressObject}&' +
+        'description={lorem|32}');
+}
+
+
+export const getBigDataAxios = () => {
+    return axios.get('http://www.filltext.com/?rows=1000&' +
+        'id={number|1000}&' +
+        'firstName={firstName}&' +
+        'delay=3&' +
+        'lastName={lastName}&' +
+        'email={email}&' +
+        'phone={phone|(xxx)xxx-xx-xx}&' +
+        'address={addressObject}&' +
+        'description={lorem|32}');
+}

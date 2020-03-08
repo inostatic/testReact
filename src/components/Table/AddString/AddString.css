@@ -3,22 +3,11 @@
 }
 .form {
     display: grid;
-    /*grid-template-rows: 12fr 1fr;*/
     grid-template-columns:  1fr 1fr 1fr 1fr 1fr;
     grid-row-gap: 5px;
 
 }
-/*.form span:nth-child(1) {*/
-/*    grid-column-start: 1;*/
-/*    grid-column-end: -1;*/
-/*    text-align: right;*/
-/*}*/
 
-/*.form span:nth-child(12) {*/
-/*    grid-column-start: 1;*/
-/*    grid-column-end: -1;*/
-/*    text-align: right;*/
-/*}*/
 
 .form input {
     border-radius: 3px;
@@ -26,13 +15,12 @@
 .hide {
     display: none;
 }
-.hide + label ~ div{
+.hide + label ~ span{
     display: none;
 }
 
 
-/* когда чекбокс активен показываем блоки с содержанием  */
-.hide:checked + label + div {
+.hide:checked + label + span {
     display: block;
 
 }
