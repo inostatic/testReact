@@ -22,6 +22,13 @@ let initialState = {
         input_email: '',
         input_phone: '',
     },
+    tableHeader: {
+        id: '',
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+    },
     pageSize: 50,
     totalPostCount: null,
     copyTotalPostCount: null,
@@ -31,6 +38,7 @@ let initialState = {
     singleString: {},
     sort: null,
     searchInput: '',
+    keyButton: true,
 }
 
 
@@ -62,6 +70,7 @@ const BDReducer = (state = initialState, action) => {
                 currentPage: 1,
                 BD: [newRow, ...partPost],
                 totalPostCount: state.totalPostCount + 1,
+                keyButton: true,
             };
         }
         case BD_SET_TOTAL_POST_COUNT: {
@@ -72,6 +81,7 @@ const BDReducer = (state = initialState, action) => {
             }
         }
         case BD_UPDATE_INPUT_TEXT: {
+            let keyButton = false;
             let newTextInput = {
                 input_id: action.text.id,
                 input_firstName: action.text.firstName,
@@ -79,9 +89,16 @@ const BDReducer = (state = initialState, action) => {
                 input_email: action.text.email,
                 input_phone: action.text.phone,
             }
+            for (let key in newTextInput) {
+                if(newTextInput[key] === '' ) {
+                    keyButton = true;
+                    break;
+                }
+            }
             return {
                 ...state,
                 newTextInput: newTextInput,
+                keyButton: keyButton,
             }
         }
         case BD_SET_POSTS: {
@@ -120,7 +137,21 @@ const BDReducer = (state = initialState, action) => {
 
         case BD_SORT: {
             let fullDataSortById, sort, column;
+            let th = state.tableHeader;
             column = action.column;
+
+            for (let columnName in th) {
+                if(columnName === column) {
+                    if (th[columnName] === '▼' || th[columnName] === '') {
+                        th[columnName] = '▲';
+                    } else if (th[columnName] === '▲') {
+                        th[columnName] = '▼';
+                    }
+                } else {
+                    th[columnName] = '';
+                }
+            }
+
             if(state.sort === null || state.sort === 2) {
                 fullDataSortById = state.fullData.sort((prev, next) => {
                     if ( prev[column] < next[column] ) return -1;
@@ -142,6 +173,7 @@ const BDReducer = (state = initialState, action) => {
                 fullData: fullDataSortById,
                 BD: partPost,
                 sort: sort,
+                tableHeader: th,
             }
         }
         case BD_UPDATE_SEARCH_INPUT: {

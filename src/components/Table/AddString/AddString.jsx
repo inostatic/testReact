@@ -40,7 +40,7 @@ const AddString = (props) => {
                 <input type="text" ref={email} onChange={onFormChange} value={props.newTextInput.input_email} />
                 <span>phone </span>
                 <input type="text" ref={phone} onChange={onFormChange} value={props.newTextInput.input_phone} />
-                <span><button onClick={addForm}>Добавить</button></span>
+                <span><button disabled={props.keyButton} onClick={addForm}>Добавить</button></span>
             </span>
         </div>
     )

@@ -37,7 +37,8 @@ class BDPostCont extends React.Component {
             return (
                 <>
                     <BdAddStringContainer />
-                    <TableHeader sorting={this.props.sorting}/>
+                    <TableHeader sorting={this.props.sorting}
+                                 tableHeader={this.props.tableHeader}/>
                     <Post posts={this.props.posts}
                           currentPage={this.props.currentPage}
                           pages={pages} setCurrentPage={this.props.setCurrentPage}
@@ -64,6 +65,7 @@ let mapStateToProps = (state) => {
         stringId: state.bigData.stringId,
         singleString: state.bigData.singleString,
         searchInput: state.bigData.searchInput,
+        tableHeader: state.bigData.tableHeader,
     }
 }
 

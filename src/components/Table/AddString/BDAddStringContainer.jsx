@@ -8,6 +8,7 @@ import {connect} from "react-redux";
 let mapStateToProps = (state) => {
     return {
         newTextInput: state.bigData.newTextInput,
+        keyButton: state.bigData.keyButton,
     }
 }
 let MapDispatchToProps = (dispatch) => {

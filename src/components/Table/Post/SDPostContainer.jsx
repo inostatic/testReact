@@ -34,7 +34,8 @@ class SDPostCont extends React.Component {
             return (
                 <>
                     <SDAddStringContainer/>
-                    <TableHeader sorting={this.props.sorting}/>
+                    <TableHeader sorting={this.props.sorting}
+                                 tableHeader={this.props.tableHeader}/>
                     <Post posts={this.props.posts}
                           currentPage={this.props.currentPage}
                           pages={pages}
@@ -60,6 +61,7 @@ let mapStateToProps = (state) => {
         stringId: state.smallData.stringId,
         singleString: state.smallData.singleString,
         searchInput: state.smallData.searchInput,
+        tableHeader: state.smallData.tableHeader,
 
     }
 }
