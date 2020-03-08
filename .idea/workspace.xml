@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="36bc88da-7db9-409e-bd10-07fe8919b29a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/AddString/AddString.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/AddString/AddString.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/AddString/BDAddStringContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/AddString/BDAddStringContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/AddString/SDAddStringContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/AddString/SDAddStringContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/Post/BDPostContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Post/BDPostContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/Post/SDPostContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Post/SDPostContainer.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Table/TableHeader/TableHeader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/TableHeader/TableHeader.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/BD-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/BD-reducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/SD-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/SD-reducer.js" afterDir="false" />

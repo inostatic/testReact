@@ -2,7 +2,6 @@ import React from "react";
 import '../Table.css';
 
 const TableHeader = (props) => {
-    debugger;
     return (
         <div className="tr">
             <span className="sort" onClick={ () => {props.sorting('id')}} >id {props.tableHeader.id}</span>

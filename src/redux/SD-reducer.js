@@ -30,6 +30,10 @@ let initialState = {
         email: '',
         phone: '',
     },
+    sort: {
+        direction: 2,
+        preColumn: 'id',
+    },
     pageSize: 50,
     totalPostCount: null,
     copyTotalPostCount: null,
@@ -37,7 +41,6 @@ let initialState = {
     isFetching: false,
     stringId: null,
     singleString: {},
-    sort: null,
     searchInput: '',
     keyButton: true,
 }
@@ -53,13 +56,7 @@ const SDReducer = (state = initialState, action) => {
                 email: state.newTextInput.input_email,
                 phone: state.newTextInput.input_phone,
             };
-            let newTextInput = {
-                input_id: '',
-                input_firstName: '',
-                input_lastName: '',
-                input_email: '',
-                input_phone: '',
-            };
+            let newTextInput = {input_id: '', input_firstName: '', input_lastName: '', input_email: '', input_phone: ''};
             let start = (state.currentPage - 1) * state.pageSize;
             let end = state.currentPage * state.pageSize;
             let partPost = state.fullData.slice(start, end - 1);
@@ -136,9 +133,15 @@ const SDReducer = (state = initialState, action) => {
             }
         }
         case SD_SORT: {
-            let fullDataSortById, sort, column;
-            let th = state.tableHeader;
-            column = action.column;
+            let fullDataSortById;
+            let column = action.column;
+            let th = {...state.tableHeader};
+            let sort = {...state.sort};
+
+            if (column !== sort.preColumn) {
+                sort.direction = 2;
+                sort.preColumn = column;
+            }
 
             for (let columnName in th) {
                 if(columnName === column) {
@@ -152,22 +155,23 @@ const SDReducer = (state = initialState, action) => {
                 }
             }
 
-            if(state.sort === null || state.sort === 2) {
+            if(sort.direction === 2) {
                 fullDataSortById = state.fullData.sort((prev, next) => {
                     if ( prev[column] < next[column] ) return -1;
                     if ( prev[column] < next[column] ) return 1;
                 });
-                sort = 1;
-            } else if(state.sort === 1) {
+                sort.direction = 1;
+            } else if(sort.direction === 1) {
                 fullDataSortById = state.fullData.sort((prev, next) => {
                     if ( prev[column] < next[column] ) return -1;
                     if ( prev[column] < next[column] ) return 1;
                 }).reverse();
-                sort = 2;
+                sort.direction = 2;
             }
             let start = (state.currentPage - 1) * state.pageSize;
             let end = state.currentPage * state.pageSize;
             let partPost = fullDataSortById.slice(start, end);
+
             return {
                 ...state,
                 fullData: fullDataSortById,
@@ -184,6 +188,8 @@ const SDReducer = (state = initialState, action) => {
         }
         case SD_SEARCH: {
             let partPost;
+            let tableHeader = {id: '', firstName: '', lastName: '', email: '', phone: ''};
+            let sort = {direction: 2, preColumn: 'id'};
             if(state.searchInput === '') {
                 partPost = state.copyFullData.slice(0, 50);
                 return {
@@ -191,6 +197,8 @@ const SDReducer = (state = initialState, action) => {
                     fullData: state.copyFullData,
                     SD: partPost,
                     totalPostCount: state.copyTotalPostCount,
+                    tableHeader: tableHeader,
+                    sort: sort,
                 }
 
             } else if(state.searchInput.length > 0) {
@@ -213,6 +221,8 @@ const SDReducer = (state = initialState, action) => {
                     SD: partPost,
                     currentPage: 1,
                     totalPostCount: newTotalPostCount,
+                    tableHeader: tableHeader,
+                    sort: sort,
                 }
             }
         }
