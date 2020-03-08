@@ -1,4 +1,3 @@
-
 const SD_ADD_POST = 'SD_ADD_POST';
 const SD_UPDATE_INPUT_TEXT = 'SD_UPDATE_INPUT_TEXT';
 const SD_SET_POSTS = 'SD_SET_POSTS';
@@ -10,10 +9,10 @@ const SD_SET_TOTAL_POST_COUNT = 'SD_SET_TOTAL_POST_COUNT';
 const SD_UPDATE_SEARCH_INPUT = 'SD_UPDATE_SEARCH_INPUT';
 const SD_SEARCH = 'SD_SEARCH';
 
-
 let initialState = {
     SD: [],
     fullData: [],
+    copyFullData: [],
     newTextInput: {
         input_id: '',
         input_firstName: '',
@@ -23,13 +22,13 @@ let initialState = {
     },
     pageSize: 50,
     totalPostCount: null,
+    copyTotalPostCount: null,
     currentPage: 1,
     isFetching: false,
     stringId: null,
     singleString: {},
     sort: null,
     searchInput: '',
-
 }
 
 
@@ -53,6 +52,7 @@ const SDReducer = (state = initialState, action) => {
             let start = (state.currentPage - 1) * state.pageSize;
             let end = state.currentPage * state.pageSize;
             let partPost = state.fullData.slice(start, end - 1);
+
             return {
                 ...state,
                 fullData: [newRow,...state.fullData],
@@ -66,6 +66,7 @@ const SDReducer = (state = initialState, action) => {
             return {
                 ...state,
                 totalPostCount: action.count,
+                copyTotalPostCount: action.count,
             }
         }
         case SD_UPDATE_INPUT_TEXT: {
@@ -86,7 +87,8 @@ const SDReducer = (state = initialState, action) => {
             return {
               ...state,
               SD: partPost,
-              fullData: [...state.fullData, ...action.SD]
+              fullData: [...state.fullData, ...action.SD],
+                copyFullData: [...state.copyFullData, ...action.SD],
             }
         }
         case SD_SET_CURRENT_PAGE: {
@@ -137,20 +139,47 @@ const SDReducer = (state = initialState, action) => {
                 fullData: fullDataSortById,
                 SD: partPost,
                 sort: sort,
-                currentPage: 1,
             }
         }
         case SD_UPDATE_SEARCH_INPUT: {
             return {
                 ...state,
-                searchInput: action.newText,
+                searchInput: action.text,
             }
         }
         case SD_SEARCH: {
-            let copyFullData = [...state.fullData];
-            let result = copyFullData.filter(elem => {
-                elem.firstName.indexOf(state.searchInput)
-            })
+            let partPost;
+            if(state.searchInput === '') {
+                partPost = state.copyFullData.slice(0, 50);
+                return {
+                    ...state,
+                    fullData: state.copyFullData,
+                    SD: partPost,
+                    totalPostCount: state.copyTotalPostCount,
+                }
+
+            } else if(state.searchInput.length > 0) {
+                let strId;
+                let filterFullData = state.copyFullData.filter(elem => {
+                    strId = String(elem.id);
+                    return (
+                        (strId.toLowerCase().indexOf(state.searchInput.toLowerCase()) !== -1)
+                        || (elem.firstName.toLowerCase().indexOf(state.searchInput.toLowerCase()) !== -1)
+                        || (elem.lastName.toLowerCase().indexOf(state.searchInput.toLowerCase()) !== -1)
+                        || (elem.email.toLowerCase().indexOf(state.searchInput.toLowerCase()) !== -1)
+                        || (elem.phone.toLowerCase().indexOf(state.searchInput.toLowerCase()) !== -1)
+                    )
+                });
+                partPost = filterFullData.slice(0, 50);
+                let newTotalPostCount = filterFullData.length;
+                return {
+                    ...state,
+                    fullData: filterFullData,
+                    SD: partPost,
+                    currentPage: 1,
+                    totalPostCount: newTotalPostCount,
+                }
+            }
         }
         default:
             return state;
@@ -166,5 +195,5 @@ export const getSmallDataSingleString = (stringId) => ({type: SD_SINGLE_STRING, 
 export const sortSmallDataActionCreator = (column) => ({type: SD_SORT, column  });
 export const setSmallDataTotalPostCount = (count) => ({type: SD_SET_TOTAL_POST_COUNT, count  });
 export const updateSmallDataSearchActionCreator = (newText) => ({type: SD_UPDATE_SEARCH_INPUT, text: newText});
-export const filterSmallDataActionCreator = () => ({type: SD_SORT  });
+export const filterSmallDataActionCreator = () => ({type: SD_SEARCH  });
 export default SDReducer;

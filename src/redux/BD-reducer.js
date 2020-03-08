@@ -1,5 +1,3 @@
-
-
 const BD_ADD_POST = 'BD_ADD_POST';
 const BD_UPDATE_INPUT_TEXT = 'BD_UPDATE_INPUT_TEXT';
 const BD_SET_POSTS = 'BD_SET_POSTS';
@@ -14,6 +12,7 @@ const BD_UPDATE_SEARCH_INPUT = 'BD_UPDATE_SEARCH_INPUT';
 let initialState = {
     BD: [],
     fullData: [],
+    copyFullData: [],
     newTextInput: {
         input_id: '',
         input_firstName: '',
@@ -23,14 +22,13 @@ let initialState = {
     },
     pageSize: 50,
     totalPostCount: null,
+    copyTotalPostCount: null,
     currentPage: 1,
     isFetching: false,
     stringId: null,
     singleString: {},
     sort: null,
     searchInput: '',
-    copyFullData: [],
-    filterBD: [],
 }
 
 
@@ -68,6 +66,7 @@ const BDReducer = (state = initialState, action) => {
             return {
                 ...state,
                 totalPostCount: action.count,
+                copyTotalPostCount: action.count,
             }
         }
         case BD_UPDATE_INPUT_TEXT: {
@@ -150,15 +149,19 @@ const BDReducer = (state = initialState, action) => {
             }
         }
         case BD_SEARCH: {
+            let partPost;
             if(state.searchInput === '') {
+                partPost = state.copyFullData.slice(0, 50);
                 return {
                     ...state,
                     fullData: state.copyFullData,
+                    BD: partPost,
+                    totalPostCount: state.copyTotalPostCount,
                 }
 
             } else if(state.searchInput.length > 0) {
                 let strId;
-                let filterFullData = state.fullData.filter(elem => {
+                let filterFullData = state.copyFullData.filter(elem => {
                     strId = String(elem.id);
                     return (
                         (strId.toLowerCase().indexOf(state.searchInput.toLowerCase()) !== -1)
@@ -168,16 +171,16 @@ const BDReducer = (state = initialState, action) => {
                         || (elem.phone.toLowerCase().indexOf(state.searchInput.toLowerCase()) !== -1)
                     )
                 });
-                let partPost = filterFullData.slice(0, 50);
+                partPost = filterFullData.slice(0, 50);
+                let newTotalPostCount = filterFullData.length;
                 return {
                     ...state,
                     fullData: filterFullData,
                     BD: partPost,
                     currentPage: 1,
+                    totalPostCount: newTotalPostCount,
                 }
             }
-
-
         }
         default:
             return state;
