@@ -5,6 +5,7 @@ const Search = (props) => {
 
     let onFormChange = (event) => {
         props.updateSearchActionCreator(event.target.value);
+
     }
 
     return (

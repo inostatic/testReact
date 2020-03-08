@@ -29,6 +29,8 @@ let initialState = {
     singleString: {},
     sort: null,
     searchInput: '',
+    copyFullData: [],
+    filterBD: [],
 }
 
 
@@ -87,6 +89,7 @@ const BDReducer = (state = initialState, action) => {
                 ...state,
                 BD: partPost,
                 fullData: [...state.fullData, ...action.BD],
+                copyFullData: [...state.copyFullData, ...action.BD],
             }
         }
         case BD_SET_CURRENT_PAGE: {
@@ -143,20 +146,43 @@ const BDReducer = (state = initialState, action) => {
         case BD_UPDATE_SEARCH_INPUT: {
             return {
                 ...state,
-                searchInput: action.newText,
+                searchInput: action.text,
             }
         }
         case BD_SEARCH: {
-           let copyFullData = [...state.fullData];
-           let result = copyFullData.filter(elem => {
-               elem.firstName.indexOf(state.searchInput)
-           })
+            if(state.searchInput === '') {
+                return {
+                    ...state,
+                    fullData: state.copyFullData,
+                }
+
+            } else if(state.searchInput.length > 0) {
+                let strId;
+                let filterFullData = state.fullData.filter(elem => {
+                    strId = String(elem.id);
+                    return (
+                        (strId.toLowerCase().indexOf(state.searchInput.toLowerCase()) !== -1)
+                        || (elem.firstName.toLowerCase().indexOf(state.searchInput.toLowerCase()) !== -1)
+                        || (elem.lastName.toLowerCase().indexOf(state.searchInput.toLowerCase()) !== -1)
+                        || (elem.email.toLowerCase().indexOf(state.searchInput.toLowerCase()) !== -1)
+                        || (elem.phone.toLowerCase().indexOf(state.searchInput.toLowerCase()) !== -1)
+                    )
+                });
+                let partPost = filterFullData.slice(0, 50);
+                return {
+                    ...state,
+                    fullData: filterFullData,
+                    BD: partPost,
+                    currentPage: 1,
+                }
+            }
+
+
         }
         default:
             return state;
     }
 }
-
 
 
 export const addBigDataPostActionCreator = () => ({type: BD_ADD_POST });
@@ -168,5 +194,5 @@ export const getBigDataSingleString = (stringId) => ({type: BD_SINGLE_STRING, st
 export const sortBigDataActionCreator = (column) => ({type: BD_SORT, column  });
 export const setBigDataTotalPostCount = (count) => ({type: BD_SET_TOTAL_POST_COUNT, count  });
 export const updateBigDataSearchActionCreator = (newText) => ({type: BD_UPDATE_SEARCH_INPUT, text: newText});
-export const filterBigDataActionCreator = () => ({type: BD_SORT  });
+export const filterBigDataActionCreator = () => ({type: BD_SEARCH  });
 export default BDReducer;
