@@ -1,6 +1,5 @@
 import React from "react";
 import './Header.css';
-// import '../../App.css';
 import {NavLink} from "react-router-dom";
 
 const Header = () => {

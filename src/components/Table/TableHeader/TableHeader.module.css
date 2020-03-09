@@ -1,0 +1,39 @@
+.th {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.th div {
+    background-color: #4e454d;
+}
+
+.sort {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.sort:hover {
+    color: gold;
+    cursor: pointer;
+}
+
+.selectedPage {
+    font-weight: bold;
+    color: gold;
+    cursor: not-allowed;
+}
+
+.normalPage {
+    cursor: pointer;
+}
+
+.pagination {
+    text-align: right;
+    background-color: #4e454d;
+    border: 1px solid #212941;
+    border-radius: 3px;
+    padding: 8px 15px;
+    color: #ffffff;
+    font-size: 18px;
+    font-family: roboto;
+}

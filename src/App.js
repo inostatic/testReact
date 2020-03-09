@@ -6,16 +6,13 @@ import Smalldata from "./components/Table/Smalldata";
 import {Route} from "react-router-dom";
 
 
-
-
-const App = (props) => {
+const App = () => {
     return(
             <div className='app-wrapper'>
                 <Header/>
                 <Route path="/bigdata" render={ () => <Bigdata /> } />
                 <Route path="/smalldata" render={ () => <Smalldata /> } />
             </div>
-
     );
 }
 

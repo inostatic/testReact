@@ -1,5 +1,4 @@
 import React from "react";
-import '../Table.css';
 import Post from "./Post";
 import {connect} from "react-redux";
 import {
@@ -35,11 +34,12 @@ class SDPostCont extends React.Component {
                 <>
                     <SDAddStringContainer/>
                     <TableHeader sorting={this.props.sorting}
-                                 tableHeader={this.props.tableHeader}/>
+                                 tableHeader={this.props.tableHeader}
+                                 currentPage={this.props.currentPage}
+                                 setCurrentPage={this.props.setCurrentPage}
+                                 pages={pages}/>
                     <Post posts={this.props.posts}
-                          currentPage={this.props.currentPage}
-                          pages={pages}
-                          setCurrentPage={this.props.setCurrentPage}
+
                           getSingleString={this.props.getSingleString}/>
                     <Search filterActionCreator={this.props.filterActionCreator}
                             updateSearchActionCreator={this.props.updateSearchActionCreator}

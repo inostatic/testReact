@@ -1,8 +1,8 @@
-import axios, {AxiosResponse} from "axios";
+import axios from "axios";
 
 
 export const getSmallDataAxios = () => {
-   return axios.get('http://www.filltext.com/?rows=32&' +
+    return axios.get('http://www.filltext.com/?rows=32&' +
         'id={number|1000}&firstName={firstName}&' +
         'lastName={lastName}&' +
         'email={email}&' +

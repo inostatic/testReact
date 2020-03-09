@@ -1,6 +1,5 @@
 import {getSmallDataAxios} from "../API/API";
 
-
 const SD_ADD_POST = 'SD_ADD_POST';
 const SD_UPDATE_INPUT_TEXT = 'SD_UPDATE_INPUT_TEXT';
 const SD_SET_POSTS = 'SD_SET_POSTS';
@@ -11,6 +10,7 @@ const SD_SORT = 'SD_SORT';
 const SD_SET_TOTAL_POST_COUNT = 'SD_SET_TOTAL_POST_COUNT';
 const SD_UPDATE_SEARCH_INPUT = 'SD_UPDATE_SEARCH_INPUT';
 const SD_SEARCH = 'SD_SEARCH';
+const SD_OPEN_FORM = 'SD_OPEN_FORM';
 
 let initialState = {
     SD: [],
@@ -34,6 +34,7 @@ let initialState = {
         direction: 2,
         preColumn: 'id',
     },
+    openForm: false,
     pageSize: 50,
     totalPostCount: null,
     copyTotalPostCount: null,
@@ -57,14 +58,21 @@ const SDReducer = (state = initialState, action) => {
                 email: state.newTextInput.input_email,
                 phone: state.newTextInput.input_phone,
             };
-            let newTextInput = {input_id: '', input_firstName: '', input_lastName: '', input_email: '', input_phone: ''};
+            let newTextInput = {
+                input_id: '',
+                input_firstName: '',
+                input_lastName: '',
+                input_email: '',
+                input_phone: ''
+            };
             let start = (state.currentPage - 1) * state.pageSize;
             let end = state.currentPage * state.pageSize;
             let partPost = state.fullData.slice(start, end - 1);
+
             return {
                 ...state,
-                fullData: [newRow,...state.fullData],
-                copyFullData: [newRow,...state.copyFullData],
+                fullData: [newRow, ...state.fullData],
+                copyFullData: [newRow, ...state.copyFullData],
                 newTextInput: newTextInput,
                 currentPage: 1,
                 SD: [newRow, ...partPost],
@@ -72,6 +80,14 @@ const SDReducer = (state = initialState, action) => {
                 copyTotalPostCount: state.copyTotalPostCount + 1,
                 keyButton: true,
             };
+        }
+        /*****************************************************************/
+        case SD_OPEN_FORM: {
+            if (state.openForm === false) {
+                return {...state, openForm: true}
+            } else if (state.openForm === true) {
+                return {...state, openForm: false}
+            }
         }
         /*****************************************************************/
         case SD_SET_TOTAL_POST_COUNT: {
@@ -91,12 +107,14 @@ const SDReducer = (state = initialState, action) => {
                 input_email: action.text.email,
                 input_phone: action.text.phone,
             }
+
             for (let key in newTextInput) {
-                if(newTextInput[key] === '' ) {
+                if (newTextInput[key] === '') {
                     keyButton = true;
                     break;
                 }
             }
+
             return {
                 ...state,
                 newTextInput: newTextInput,
@@ -107,7 +125,8 @@ const SDReducer = (state = initialState, action) => {
         case SD_SET_POSTS: {
             let partPost = action.SD.slice(state.currentPage - 1, state.pageSize);
             let tableHeader = {id: '', firstName: '', lastName: '', email: '', phone: ''};
-            let sort = { direction: 2, preColumn: 'id' };
+            let sort = {direction: 2, preColumn: 'id'};
+
             return {
                 ...state,
                 SD: partPost,
@@ -123,6 +142,7 @@ const SDReducer = (state = initialState, action) => {
             let start = (action.currentPage - 1) * state.pageSize;
             let end = action.currentPage * state.pageSize;
             let partPost = state.fullData.slice(start, end);
+
             return {
                 ...state,
                 currentPage: action.currentPage,
@@ -138,7 +158,8 @@ const SDReducer = (state = initialState, action) => {
         }
         /*****************************************************************/
         case SD_SINGLE_STRING: {
-            let singleString = state.fullData.find( string => string.id === action.stringId);
+            let singleString = state.fullData.find(string => string.id === action.stringId);
+
             return {
                 ...state,
                 stringId: action.stringId,
@@ -151,13 +172,14 @@ const SDReducer = (state = initialState, action) => {
             let column = action.column;
             let th = {...state.tableHeader};
             let sort = {...state.sort};
+
             if (column !== sort.preColumn) {
                 sort.direction = 2;
                 sort.preColumn = column;
             }
 
             for (let columnName in th) {
-                if(columnName === column) {
+                if (columnName === column) {
                     if (th[columnName] === '▼' || th[columnName] === '') {
                         th[columnName] = '▲';
                     } else if (th[columnName] === '▲') {
@@ -168,19 +190,20 @@ const SDReducer = (state = initialState, action) => {
                 }
             }
 
-            if(sort.direction === 2) {
+            if (sort.direction === 2) {
                 fullDataSortById = state.fullData.sort((prev, next) => {
-                    if ( prev[column] < next[column] ) return -1;
-                    if ( prev[column] < next[column] ) return 1;
+                    if (prev[column] < next[column]) return -1;
+                    if (prev[column] < next[column]) return 1;
                 });
                 sort.direction = 1;
-            } else if(sort.direction === 1) {
+            } else if (sort.direction === 1) {
                 fullDataSortById = state.fullData.sort((prev, next) => {
-                    if ( prev[column] < next[column] ) return -1;
-                    if ( prev[column] < next[column] ) return 1;
+                    if (prev[column] < next[column]) return -1;
+                    if (prev[column] < next[column]) return 1;
                 }).reverse();
                 sort.direction = 2;
             }
+
             let start = (state.currentPage - 1) * state.pageSize;
             let end = state.currentPage * state.pageSize;
             let partPost = fullDataSortById.slice(start, end);
@@ -205,9 +228,9 @@ const SDReducer = (state = initialState, action) => {
             let partPost;
             let tableHeader = {id: '', firstName: '', lastName: '', email: '', phone: ''};
             let sort = {direction: 2, preColumn: 'id'};
-            if(state.searchInput === '') {
-                let totalPostCount =
+            if (state.searchInput === '') {
                 partPost = state.copyFullData.slice(0, 50);
+
                 return {
                     ...state,
                     fullData: [...state.copyFullData],
@@ -217,10 +240,11 @@ const SDReducer = (state = initialState, action) => {
                     sort: sort,
                     currentPage: 1,
                 }
-            } else if(state.searchInput.length > 0) {
+            } else if (state.searchInput.length > 0) {
                 let strId;
                 let filterFullData = state.copyFullData.filter(elem => {
                     strId = String(elem.id);
+
                     return (
                         (strId.toLowerCase().indexOf(state.searchInput.toLowerCase()) !== -1)
                         || (elem.firstName.toLowerCase().indexOf(state.searchInput.toLowerCase()) !== -1)
@@ -232,6 +256,7 @@ const SDReducer = (state = initialState, action) => {
 
                 partPost = filterFullData.slice(0, 50);
                 let newTotalPostCount = filterFullData.length;
+
                 return {
                     ...state,
                     fullData: filterFullData,
@@ -249,17 +274,17 @@ const SDReducer = (state = initialState, action) => {
     }
 }
 
-export const addSmallDataPostActionCreator = () => ({type: SD_ADD_POST });
+export const addSmallDataPostActionCreator = () => ({type: SD_ADD_POST});
+export const openFormSmallDataActionCreator = () => ({type: SD_OPEN_FORM});
 export const updateSmallDataPostActionCreator = (newText) => ({type: SD_UPDATE_INPUT_TEXT, text: newText});
-export const setSmallDataPostActionCreator = (SD) => ({type: SD_SET_POSTS, SD });
-export const setSmallDataCurrentPageActionCreator = (currentPage) => ({type: SD_SET_CURRENT_PAGE, currentPage });
-export const setSmallDataDisplayPreloader = (isFetching) => ({type: SD_DISPLAY_PRELOADER, isFetching });
-export const getSmallDataSingleString = (stringId) => ({type: SD_SINGLE_STRING, stringId });
-export const sortSmallDataActionCreator = (column) => ({type: SD_SORT, column  });
-export const setSmallDataTotalPostCount = (count) => ({type: SD_SET_TOTAL_POST_COUNT, count  });
+export const setSmallDataPostActionCreator = (SD) => ({type: SD_SET_POSTS, SD});
+export const setSmallDataCurrentPageActionCreator = (currentPage) => ({type: SD_SET_CURRENT_PAGE, currentPage});
+export const setSmallDataDisplayPreloader = (isFetching) => ({type: SD_DISPLAY_PRELOADER, isFetching});
+export const getSmallDataSingleString = (stringId) => ({type: SD_SINGLE_STRING, stringId});
+export const sortSmallDataActionCreator = (column) => ({type: SD_SORT, column});
+export const setSmallDataTotalPostCount = (count) => ({type: SD_SET_TOTAL_POST_COUNT, count});
 export const updateSmallDataSearchActionCreator = (newText) => ({type: SD_UPDATE_SEARCH_INPUT, text: newText});
-export const filterSmallDataActionCreator = () => ({type: SD_SEARCH  });
-
+export const filterSmallDataActionCreator = () => ({type: SD_SEARCH});
 export const SmallDataGetPostsThunkCreator = () => {
     return (dispatch) => {
         dispatch(setSmallDataDisplayPreloader(true));

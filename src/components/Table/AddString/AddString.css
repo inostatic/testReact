@@ -1,20 +1,29 @@
-.addStr {
+.addStrClose {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 30px 23px 20px;
+    grid-template-rows: 1fr 30px 30px 30px;
     grid-row-gap: 2px;
-    font-style: oblique;
 }
-.addStr div:nth-child(1) {
+
+.addStrClose div:nth-child(1) {
     grid-column-start: 1;
     grid-column-end: -1;
 
 }
-.addStr input {
+
+.addStrClose input {
     border-radius: 3px;
 }
-.addStr button {
+
+.addStrClose button {
     border-radius: 3px;
     grid-column-start: 5;
     grid-column-end: -1;
+    font-size: 16px;
+    font-family: roboto;
+}
+
+.submit:hover {
+    color: gold;
+    cursor: pointer;
 }

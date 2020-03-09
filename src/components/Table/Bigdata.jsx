@@ -4,7 +4,7 @@ import BDPostContainer from "./Post/BDPostContainer";
 const Bigdata = () => {
     return (
         <div>
-            <BDPostContainer />
+            <BDPostContainer/>
         </div>
     )
 }

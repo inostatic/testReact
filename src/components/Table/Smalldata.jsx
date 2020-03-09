@@ -4,7 +4,7 @@ import SDPostContainer from "./Post/SDPostContainer";
 const Smalldata = () => {
     return (
         <div>
-            <SDPostContainer />
+            <SDPostContainer/>
         </div>
     )
 }

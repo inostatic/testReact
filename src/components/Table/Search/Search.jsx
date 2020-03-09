@@ -1,18 +1,18 @@
 import React from "react";
 import './Search.css';
-// import '../../../App.css';
-const Search = (props) => {
 
+
+const Search = (props) => {
     let onFormChange = (event) => {
         props.updateSearchActionCreator(event.target.value);
-
     }
 
     return (
-        <div className="search">
-            <input type="text" onChange={onFormChange} value={props.searchInput}></input>
-            <span><button onClick={() => props.filterActionCreator()}>Поиск</button></span>
-        </div>
+        <span className="search">
+            <input type="text" onChange={onFormChange} value={props.searchInput}
+                   placeholder=" Введите строку для поиска"></input>
+            <button onClick={() => props.filterActionCreator()}>Поиск</button>
+        </span>
     )
 }
 

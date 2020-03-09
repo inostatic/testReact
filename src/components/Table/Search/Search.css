@@ -1,3 +1,19 @@
+.search {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-template-rows: 30px;
+}
+
 .search input {
-    width: 94%;
+    border-radius: 5px;
+    border: 1px solid #212941;
+    font-size: 18px;
+    font-family: roboto;
+}
+
+.search button {
+    border-radius: 5px;
+    border: 1px solid #212941;
+    font-size: 16px;
+    font-family: roboto;
 }
