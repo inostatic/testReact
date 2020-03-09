@@ -48,6 +48,7 @@ let initialState = {
 
 const SDReducer = (state = initialState, action) => {
     switch (action.type) {
+        /*****************************************************************/
         case SD_ADD_POST: {
             let newRow = {
                 id: state.newTextInput.input_id,
@@ -60,10 +61,10 @@ const SDReducer = (state = initialState, action) => {
             let start = (state.currentPage - 1) * state.pageSize;
             let end = state.currentPage * state.pageSize;
             let partPost = state.fullData.slice(start, end - 1);
-
             return {
                 ...state,
                 fullData: [newRow,...state.fullData],
+                copyFullData: [newRow,...state.copyFullData],
                 newTextInput: newTextInput,
                 currentPage: 1,
                 SD: [newRow, ...partPost],
@@ -71,6 +72,7 @@ const SDReducer = (state = initialState, action) => {
                 keyButton: true,
             };
         }
+        /*****************************************************************/
         case SD_SET_TOTAL_POST_COUNT: {
             return {
                 ...state,
@@ -78,6 +80,7 @@ const SDReducer = (state = initialState, action) => {
                 copyTotalPostCount: action.count,
             }
         }
+        /*****************************************************************/
         case SD_UPDATE_INPUT_TEXT: {
             let keyButton = false;
             let newTextInput = {
@@ -99,15 +102,22 @@ const SDReducer = (state = initialState, action) => {
                 keyButton: keyButton,
             }
         }
+        /*****************************************************************/
         case SD_SET_POSTS: {
             let partPost = action.SD.slice(state.currentPage - 1, state.pageSize);
+            let tableHeader = {id: '', firstName: '', lastName: '', email: '', phone: ''};
+            let sort = { direction: 2, preColumn: 'id' };
             return {
-              ...state,
-              SD: partPost,
-              fullData: [...state.fullData, ...action.SD],
+                ...state,
+                SD: partPost,
+                fullData: [...state.fullData, ...action.SD],
                 copyFullData: [...state.copyFullData, ...action.SD],
+                tableHeader: tableHeader,
+                sort: sort,
+                currentPage: 1,
             }
         }
+        /*****************************************************************/
         case SD_SET_CURRENT_PAGE: {
             let start = (action.currentPage - 1) * state.pageSize;
             let end = action.currentPage * state.pageSize;
@@ -118,12 +128,14 @@ const SDReducer = (state = initialState, action) => {
                 SD: partPost,
             }
         }
+        /*****************************************************************/
         case SD_DISPLAY_PRELOADER: {
             return {
                 ...state,
                 isFetching: action.isFetching,
             }
         }
+        /*****************************************************************/
         case SD_SINGLE_STRING: {
             let singleString = state.fullData.find( string => string.id === action.stringId);
             return {
@@ -132,12 +144,12 @@ const SDReducer = (state = initialState, action) => {
                 singleString: singleString,
             }
         }
+        /*****************************************************************/
         case SD_SORT: {
             let fullDataSortById;
             let column = action.column;
             let th = {...state.tableHeader};
             let sort = {...state.sort};
-
             if (column !== sort.preColumn) {
                 sort.direction = 2;
                 sort.preColumn = column;
@@ -180,27 +192,30 @@ const SDReducer = (state = initialState, action) => {
                 tableHeader: th,
             }
         }
+        /*****************************************************************/
         case SD_UPDATE_SEARCH_INPUT: {
             return {
                 ...state,
                 searchInput: action.text,
             }
         }
+        /*****************************************************************/
         case SD_SEARCH: {
             let partPost;
             let tableHeader = {id: '', firstName: '', lastName: '', email: '', phone: ''};
             let sort = {direction: 2, preColumn: 'id'};
             if(state.searchInput === '') {
+                let totalPostCount =
                 partPost = state.copyFullData.slice(0, 50);
                 return {
                     ...state,
-                    fullData: state.copyFullData,
+                    fullData: [...state.copyFullData],
                     SD: partPost,
                     totalPostCount: state.copyTotalPostCount,
                     tableHeader: tableHeader,
                     sort: sort,
+                    currentPage: 1,
                 }
-
             } else if(state.searchInput.length > 0) {
                 let strId;
                 let filterFullData = state.copyFullData.filter(elem => {
@@ -213,6 +228,7 @@ const SDReducer = (state = initialState, action) => {
                         || (elem.phone.toLowerCase().indexOf(state.searchInput.toLowerCase()) !== -1)
                     )
                 });
+
                 partPost = filterFullData.slice(0, 50);
                 let newTotalPostCount = filterFullData.length;
                 return {
@@ -226,6 +242,7 @@ const SDReducer = (state = initialState, action) => {
                 }
             }
         }
+        /*****************************************************************/
         default:
             return state;
     }

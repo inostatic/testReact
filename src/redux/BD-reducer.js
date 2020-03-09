@@ -10,6 +10,7 @@ const BD_SORT = 'BD_SORT';
 const BD_SEARCH = 'BD_SEARCH';
 const BD_SET_TOTAL_POST_COUNT = 'BD_SET_TOTAL_POST_COUNT';
 const BD_UPDATE_SEARCH_INPUT = 'BD_UPDATE_SEARCH_INPUT';
+// const BD_PAGINATION_COUNT_PAGE = 'BD_PAGINATION_COUNT_PAGE';
 
 let initialState = {
     BD: [],
@@ -47,6 +48,7 @@ let initialState = {
 
 const BDReducer = (state = initialState, action) => {
     switch (action.type) {
+        /*****************************************************************/
         case BD_ADD_POST: {
             let newRow = {
                 id: state.newTextInput.input_id,
@@ -59,10 +61,10 @@ const BDReducer = (state = initialState, action) => {
             let start = (state.currentPage - 1) * state.pageSize;
             let end = state.currentPage * state.pageSize;
             let partPost = state.fullData.slice(start, end - 1);
-
             return {
                 ...state,
                 fullData: [newRow,...state.fullData],
+                copyFullData: [newRow,...state.copyFullData],
                 newTextInput: newTextInput,
                 currentPage: 1,
                 BD: [newRow, ...partPost],
@@ -70,6 +72,7 @@ const BDReducer = (state = initialState, action) => {
                 keyButton: true,
             };
         }
+        /*****************************************************************/
         case BD_SET_TOTAL_POST_COUNT: {
             return {
                 ...state,
@@ -77,6 +80,8 @@ const BDReducer = (state = initialState, action) => {
                 copyTotalPostCount: action.count,
             }
         }
+        /*****************************************************************/
+
         case BD_UPDATE_INPUT_TEXT: {
             let keyButton = false;
             let newTextInput = {
@@ -98,15 +103,22 @@ const BDReducer = (state = initialState, action) => {
                 keyButton: keyButton,
             }
         }
+        /*****************************************************************/
         case BD_SET_POSTS: {
             let partPost = action.BD.slice(state.currentPage - 1, state.pageSize);
+            let tableHeader = {id: '', firstName: '', lastName: '', email: '', phone: ''};
+            let sort = { direction: 2, preColumn: 'id' };
             return {
                 ...state,
                 BD: partPost,
                 fullData: [...state.fullData, ...action.BD],
                 copyFullData: [...state.copyFullData, ...action.BD],
+                tableHeader: tableHeader,
+                sort: sort,
+                currentPage: 1,
             }
         }
+        /*****************************************************************/
         case BD_SET_CURRENT_PAGE: {
             let start = (action.currentPage - 1) * state.pageSize;
             let end = action.currentPage * state.pageSize;
@@ -117,12 +129,14 @@ const BDReducer = (state = initialState, action) => {
                 BD: partPost,
             }
         }
+        /*****************************************************************/
         case BD_DISPLAY_PRELOADER: {
             return {
                 ...state,
                 isFetching: action.isFetching,
             }
         }
+        /*****************************************************************/
         case BD_SINGLE_STRING: {
             let singleString = state.fullData.find( string => string.id === action.stringId);
             return {
@@ -131,7 +145,7 @@ const BDReducer = (state = initialState, action) => {
                 singleString: singleString,
             }
         }
-
+        /*****************************************************************/
         case BD_SORT: {
             let fullDataSortById;
             let column = action.column;
@@ -142,7 +156,6 @@ const BDReducer = (state = initialState, action) => {
                 sort.direction = 2;
                 sort.preColumn = column;
             }
-
             for (let columnName in th) {
                 if(columnName === column) {
                     if (th[columnName] === '▼' || th[columnName] === '') {
@@ -179,12 +192,14 @@ const BDReducer = (state = initialState, action) => {
                 tableHeader: th,
             }
         }
+        /*****************************************************************/
         case BD_UPDATE_SEARCH_INPUT: {
             return {
                 ...state,
                 searchInput: action.text,
             }
         }
+        /*****************************************************************/
         case BD_SEARCH: {
             let partPost;
             let tableHeader = {id: '', firstName: '', lastName: '', email: '', phone: ''};
@@ -193,13 +208,13 @@ const BDReducer = (state = initialState, action) => {
                 partPost = state.copyFullData.slice(0, 50);
                 return {
                     ...state,
-                    fullData: state.copyFullData,
+                    fullData: [...state.copyFullData],
                     BD: partPost,
                     totalPostCount: state.copyTotalPostCount,
                     tableHeader: tableHeader,
                     sort: sort,
+                    currentPage: 1,
                 }
-
             } else if(state.searchInput.length > 0) {
                 let strId;
                 let filterFullData = state.copyFullData.filter(elem => {
@@ -225,6 +240,7 @@ const BDReducer = (state = initialState, action) => {
                 }
             }
         }
+        /*****************************************************************/
         default:
             return state;
     }

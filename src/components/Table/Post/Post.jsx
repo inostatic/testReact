@@ -15,7 +15,7 @@ const Post = (props) => {
             {
                 props.posts.map((str, key) => {
                         return (
-                            <div className="tr" onClick={() => {
+                            <div className="tr" id={key} onClick={() => {
                                 props.getSingleString(str.id)
                             }}>
                                 <span id={key}>{str.id}</span>
