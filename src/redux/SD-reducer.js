@@ -69,6 +69,7 @@ const SDReducer = (state = initialState, action) => {
                 currentPage: 1,
                 SD: [newRow, ...partPost],
                 totalPostCount: state.totalPostCount + 1,
+                copyTotalPostCount: state.copyTotalPostCount + 1,
                 keyButton: true,
             };
         }

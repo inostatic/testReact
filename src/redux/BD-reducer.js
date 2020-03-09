@@ -10,7 +10,6 @@ const BD_SORT = 'BD_SORT';
 const BD_SEARCH = 'BD_SEARCH';
 const BD_SET_TOTAL_POST_COUNT = 'BD_SET_TOTAL_POST_COUNT';
 const BD_UPDATE_SEARCH_INPUT = 'BD_UPDATE_SEARCH_INPUT';
-// const BD_PAGINATION_COUNT_PAGE = 'BD_PAGINATION_COUNT_PAGE';
 
 let initialState = {
     BD: [],
@@ -69,6 +68,7 @@ const BDReducer = (state = initialState, action) => {
                 currentPage: 1,
                 BD: [newRow, ...partPost],
                 totalPostCount: state.totalPostCount + 1,
+                copyTotalPostCount: state.copyTotalPostCount + 1,
                 keyButton: true,
             };
         }
