@@ -1,6 +1,6 @@
 import React from "react";
 import './SingleInfo.css';
-
+// import '../../../App.css';
 const SingleInfo = (props) => {
     return (
       <>

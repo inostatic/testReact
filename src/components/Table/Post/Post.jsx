@@ -1,29 +1,29 @@
 import React from "react";
 import '../Table.css';
 import styles from './Post.module.css';
-
+// import '../../../App.css';
 
 const Post = (props) => {
 
     return (
         <>
-            <div>{props.pages.map(p => <span
+            <nav className={styles.pagination} >{props.pages.map(p => <span
                 className={props.currentPage === p ? styles.selectedPage : styles.normalPage}
                 onClick={() => {
                     props.setCurrentPage(p)
-                }}> {p} </span>)}</div>
+                }}> {p} </span>)}</nav>
             {
                 props.posts.map((str, key) => {
                         return (
-                            <div className="tr" id={key} onClick={() => {
+                            <span className={styles.post} id={key} onClick={() => {
                                 props.getSingleString(str.id)
                             }}>
-                                <span id={key}>{str.id}</span>
-                                <span id={key}>{str.firstName}</span>
-                                <span id={key}>{str.lastName}</span>
-                                <span id={key}>{str.email}</span>
-                                <span id={key}>{str.phone}</span>
-                            </div>
+                                <div id={key}>{str.id}</div>
+                                <div id={key}>{str.firstName}</div>
+                                <div id={key}>{str.lastName}</div>
+                                <div id={key}>{str.email}</div>
+                                <div id={key}>{str.phone}</div>
+                            </span>
                         )
                     }
                 )}
@@ -31,6 +31,5 @@ const Post = (props) => {
         </>
     )
 }
-
 
 export default Post;

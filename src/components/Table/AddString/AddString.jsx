@@ -1,6 +1,6 @@
 import React from "react";
 import './AddString.css';
-
+// import '../../../App.css';
 const AddString = (props) => {
 
     let id = React.createRef();
@@ -24,25 +24,21 @@ const AddString = (props) => {
         props.updatePostActionCreator(newText);
     }
 
-
     return (
-        <div>
-            <input type="checkbox" id="hd-1" className="hide"/>
-            <label htmlFor="hd-1" >Открыть форму</label>
-            <span className="form" >
-                <span>id </span>
-                <input type="text" ref={id} onChange={onFormChange} value={props.newTextInput.input_id} />
-                <span>firstName </span>
-                <input type="text" ref={firstName} onChange={onFormChange}  value={props.newTextInput.input_firstName} />
-                <span>lastName </span>
-                <input type="text" ref={lastName} onChange={onFormChange} value={props.newTextInput.input_lastName} />
-                <span>email </span>
-                <input type="text" ref={email} onChange={onFormChange} value={props.newTextInput.input_email} />
-                <span>phone </span>
-                <input type="text" ref={phone} onChange={onFormChange} value={props.newTextInput.input_phone} />
-                <span><button disabled={props.keyButton} onClick={addForm}>Добавить</button></span>
-            </span>
-        </div>
+        <span className="addStr">
+            <div>Открыть форму</div>
+            <div>id: </div>
+            <div>firstName: </div>
+            <div>lastName: </div>
+            <div>email: </div>
+            <div>phone: </div>
+            <input type="text" ref={id} onChange={onFormChange} value={props.newTextInput.input_id}/>
+            <input type="text" ref={firstName} onChange={onFormChange} value={props.newTextInput.input_firstName}/>
+            <input type="text" ref={lastName} onChange={onFormChange} value={props.newTextInput.input_lastName}/>
+            <input type="text" ref={email} onChange={onFormChange} value={props.newTextInput.input_email}/>
+            <input type="text" ref={phone} onChange={onFormChange} value={props.newTextInput.input_phone}/>
+            <button disabled={props.keyButton} onClick={addForm}>Добавить</button>
+        </span>
     )
 }
 

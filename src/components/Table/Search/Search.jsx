@@ -1,6 +1,6 @@
 import React from "react";
 import './Search.css';
-
+// import '../../../App.css';
 const Search = (props) => {
 
     let onFormChange = (event) => {

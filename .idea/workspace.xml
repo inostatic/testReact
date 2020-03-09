@@ -3,8 +3,21 @@
   <component name="ChangeListManager">
     <list default="true" id="36bc88da-7db9-409e-bd10-07fe8919b29a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/BD-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/BD-reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/SD-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/SD-reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/AddString/AddString.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/AddString/AddString.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/AddString/AddString.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/AddString/AddString.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/Bigdata.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Bigdata.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/Post/BDPostContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Post/BDPostContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/Post/Post.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Post/Post.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/Post/Post.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Post/Post.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/Search/Search.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Search/Search.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/SingleInfo/SingleInfo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/SingleInfo/SingleInfo.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/Smalldata.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Smalldata.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/Table.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/TableHeader/TableHeader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/TableHeader/TableHeader.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Preloader/preloader.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Preloader/preloader.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +90,8 @@
       <workItem from="1583402653581" duration="5953000" />
       <workItem from="1583486662623" duration="2578000" />
       <workItem from="1583516945279" duration="53336000" />
+      <workItem from="1583773871331" duration="483000" />
+      <workItem from="1583774855618" duration="2759000" />
     </task>
     <servers />
   </component>
@@ -84,10 +99,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="690" y="272" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1583606727368">
+    <state x="690" y="272" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1583776020571">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="690" y="272" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1583606727368" />
+    <state x="690" y="272" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1583776020571" />
     <state width="1899" height="285" key="GridCell.Tab.0.bottom" timestamp="1583339986595">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>

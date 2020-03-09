@@ -33,6 +33,7 @@ class BDPostCont extends React.Component {
 
         if(this.props.isFetching) {
            return <><Preloader/></>
+
         } else {
             return (
                 <>

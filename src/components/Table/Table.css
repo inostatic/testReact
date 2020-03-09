@@ -1,23 +1,25 @@
-.th {
-    display: grid;
-}
+/*.th {*/
+/*    display: grid;*/
+/*}*/
 
-.th div {
-    border: 1px solid #ffffff;
-}
-.tr {
-    display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+/*.th div {*/
+/*    border: 1px solid #ffffff;*/
+/*}*/
+/*.tr {*/
+/*    display: grid;*/
+/*    grid-template-rows: 1fr;*/
+/*    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;*/
+/*    grid-gap: 10px;*/
 
-}
 
-.sort {
-    color: #ffffff;
-    text-decoration: none;
-}
+/*}*/
 
-.sort:hover {
-    color: gold;
-    cursor: pointer;
-}
+/*.sort {*/
+/*    color: #ffffff;*/
+/*    text-decoration: none;*/
+/*}*/
+
+/*.sort:hover {*/
+/*    color: gold;*/
+/*    cursor: pointer;*/
+/*}*/
