@@ -3,32 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="36bc88da-7db9-409e-bd10-07fe8919b29a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/API/API.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/API/API.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/preloader.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/preloader.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/AddString/AddString.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/AddString/AddString.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/AddString/AddString.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/AddString/AddString.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/AddString/BDAddStringContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/AddString/BDAddStringContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/AddString/SDAddStringContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/AddString/SDAddStringContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/Bigdata.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Bigdata.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/Post/BDPostContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Post/BDPostContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/Post/Post.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Post/Post.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/Post/Post.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Post/Post.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/Post/SDPostContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Post/SDPostContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Table/Search/Search.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Search/Search.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/Search/Search.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Search/Search.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/SingleInfo/SingleInfo.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/SingleInfo/SingleInfo.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/SingleInfo/SingleInfo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/SingleInfo/SingleInfo.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/Smalldata.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Smalldata.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/Table.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/TableHeader/TableHeader.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/TableHeader/TableHeader.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/TableHeader/TableHeader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/TableHeader/TableHeader.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/Preloader/Preloader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Preloader/Preloader.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/Preloader/preloader.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Preloader/preloader.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/BD-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/BD-reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/SD-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/SD-reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/TableHeader/TableHeader.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/TableHeader/TableHeader.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,6 +81,7 @@
       <workItem from="1583516945279" duration="53336000" />
       <workItem from="1583773871331" duration="483000" />
       <workItem from="1583774855618" duration="11159000" />
+      <workItem from="1583828018123" duration="492000" />
     </task>
     <servers />
   </component>

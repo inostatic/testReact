@@ -5,14 +5,14 @@
 }
 
 .search input {
-    border-radius: 5px;
+    border-radius: 0px;
     border: 1px solid #212941;
     font-size: 18px;
     font-family: roboto;
 }
 
 .search button {
-    border-radius: 5px;
+    border-radius: 0px;
     border: 1px solid #212941;
     font-size: 16px;
     font-family: roboto;
