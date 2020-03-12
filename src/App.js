@@ -1,18 +1,19 @@
 import React from 'react';
 import './App.css';
-import Bigdata from "./components/Table/Bigdata";
 import Header from "./components/Header/Header";
-import Smalldata from "./components/Table/Smalldata";
 import {Route} from "react-router-dom";
+import TableContainer from "./components/TableContainer";
 
 
 const App = () => {
     return(
-            <div className='app-wrapper'>
-                <Header/>
-                <Route path="/bigdata" render={ () => <Bigdata /> } />
-                <Route path="/smalldata" render={ () => <Smalldata /> } />
+        <div className='app-wrapper'>
+            <Header/>
+            <div>
+                <Route path="/bigdata" render={() => <TableContainer/>}/>
+                <Route path="/smalldata" render={() => <TableContainer/>}/>
             </div>
+        </div>
     );
 }
 

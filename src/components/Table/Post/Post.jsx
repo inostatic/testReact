@@ -3,14 +3,13 @@ import styles from './Post.module.css';
 
 
 const Post = (props) => {
-
     return (
         <>
             {
                 props.posts.map((str, key) => {
                         return (
                             <span className={styles.post} key={key} onClick={() => {
-                                props.getSingleString(str.id)
+                                props.getSingleStringActionCreator(str.id, str.firstName)
                             }}>
                                 <div>{str.id}</div>
                                 <div>{str.firstName}</div>

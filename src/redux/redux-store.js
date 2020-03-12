@@ -1,12 +1,10 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
-import SDReducer from "./SD-reducer";
-import BDReducer from "./BD-reducer";
+import tableReducer from "./table-reducer";
 import thunkMiddleware from "redux-thunk";
 
 
 let reducer = combineReducers({
-    smallData: SDReducer,
-    bigData: BDReducer,
+    tableData: tableReducer,
 })
 
 let store = createStore(reducer, applyMiddleware(thunkMiddleware));

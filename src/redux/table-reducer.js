@@ -1,19 +1,20 @@
-import {getSmallDataAxios} from "../API/API";
+import {getDataAxios} from "../API/API";
 
-const SD_ADD_POST = 'SD_ADD_POST';
-const SD_UPDATE_INPUT_TEXT = 'SD_UPDATE_INPUT_TEXT';
-const SD_SET_POSTS = 'SD_SET_POSTS';
-const SD_SET_CURRENT_PAGE = 'SD_SET_CURRENT_PAGE';
-const SD_DISPLAY_PRELOADER = 'SD_DISPLAY_PRELOADER';
-const SD_SINGLE_STRING = 'SD_SINGLE_STRING';
-const SD_SORT = 'SD_SORT';
-const SD_SET_TOTAL_POST_COUNT = 'SD_SET_TOTAL_POST_COUNT';
-const SD_UPDATE_SEARCH_INPUT = 'SD_UPDATE_SEARCH_INPUT';
-const SD_SEARCH = 'SD_SEARCH';
-const SD_OPEN_FORM = 'SD_OPEN_FORM';
+const ADD_POST = 'ADD_POST';
+const UPDATE_INPUT_TEXT = 'UPDATE_INPUT_TEXT';
+const SET_POSTS = 'SET_POSTS';
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+const DISPLAY_PRELOADER = 'DISPLAY_PRELOADER';
+const SINGLE_STRING = 'SINGLE_STRING';
+const SORT = 'SORT';
+const SEARCH = 'SEARCH';
+const SET_PAGINATION = 'SET_PAGINATION';
+const UPDATE_SEARCH_INPUT = 'UPDATE_SEARCH_INPUT';
+const OPEN_FORM = 'OPEN_FORM';
+
 
 let initialState = {
-    SD: [],
+    BD: [],
     fullData: [],
     copyFullData: [],
     newTextInput: {
@@ -40,17 +41,17 @@ let initialState = {
     copyTotalPostCount: null,
     currentPage: 1,
     isFetching: false,
-    stringId: null,
-    singleString: {},
+    singleString: null,
     searchInput: '',
     keyButton: true,
+    pages: [],
 }
 
 
-const SDReducer = (state = initialState, action) => {
+const tableReducer = (state = initialState, action) => {
     switch (action.type) {
         /*****************************************************************/
-        case SD_ADD_POST: {
+        case ADD_POST: {
             let newRow = {
                 id: state.newTextInput.input_id,
                 firstName: state.newTextInput.input_firstName,
@@ -68,6 +69,12 @@ const SDReducer = (state = initialState, action) => {
             let start = (state.currentPage - 1) * state.pageSize;
             let end = state.currentPage * state.pageSize;
             let partPost = state.fullData.slice(start, end - 1);
+            let pagesCount = Math.ceil((state.totalPostCount + 1) / state.pageSize);
+            let pages = [];
+
+            for (let i = 1; i <= pagesCount; i++) {
+                pages.push(i);
+            }
 
             return {
                 ...state,
@@ -75,30 +82,32 @@ const SDReducer = (state = initialState, action) => {
                 copyFullData: [newRow, ...state.copyFullData],
                 newTextInput: newTextInput,
                 currentPage: 1,
-                SD: [newRow, ...partPost],
+                BD: [newRow, ...partPost],
                 totalPostCount: state.totalPostCount + 1,
                 copyTotalPostCount: state.copyTotalPostCount + 1,
                 keyButton: true,
+                pages: pages,
             };
         }
         /*****************************************************************/
-        case SD_OPEN_FORM: {
-            if (state.openForm === false) {
-                return {...state, openForm: true}
-            } else if (state.openForm === true) {
-                return {...state, openForm: false}
+        case SET_PAGINATION: {
+            let pagesCount = Math.ceil(action.count / state.pageSize);
+            let pages = [];
+
+            for (let i = 1; i <= pagesCount; i++) {
+                pages.push(i);
             }
-        }
-        /*****************************************************************/
-        case SD_SET_TOTAL_POST_COUNT: {
+
             return {
                 ...state,
                 totalPostCount: action.count,
                 copyTotalPostCount: action.count,
+                pages: pages,
             }
         }
         /*****************************************************************/
-        case SD_UPDATE_INPUT_TEXT: {
+
+        case UPDATE_INPUT_TEXT: {
             let keyButton = false;
             let newTextInput = {
                 input_id: action.text.id,
@@ -122,23 +131,30 @@ const SDReducer = (state = initialState, action) => {
             }
         }
         /*****************************************************************/
-        case SD_SET_POSTS: {
-            let partPost = action.SD.slice(state.currentPage - 1, state.pageSize);
+        case SET_POSTS: {
+            let partPost = action.BD.slice(state.currentPage - 1, state.pageSize);
             let tableHeader = {id: '', firstName: '', lastName: '', email: '', phone: ''};
             let sort = {direction: 2, preColumn: 'id'};
-
             return {
                 ...state,
-                SD: partPost,
-                fullData: [...state.fullData, ...action.SD],
-                copyFullData: [...state.copyFullData, ...action.SD],
+                BD: partPost,
+                fullData: [...action.BD],
+                copyFullData: [...action.BD],
                 tableHeader: tableHeader,
                 sort: sort,
                 currentPage: 1,
             }
         }
         /*****************************************************************/
-        case SD_SET_CURRENT_PAGE: {
+        case OPEN_FORM: {
+            if (state.openForm === false) {
+                return {...state, openForm: true}
+            } else if (state.openForm === true) {
+                return {...state, openForm: false}
+            }
+        }
+        /*****************************************************************/
+        case SET_CURRENT_PAGE: {
             let start = (action.currentPage - 1) * state.pageSize;
             let end = action.currentPage * state.pageSize;
             let partPost = state.fullData.slice(start, end);
@@ -146,28 +162,29 @@ const SDReducer = (state = initialState, action) => {
             return {
                 ...state,
                 currentPage: action.currentPage,
-                SD: partPost,
+                BD: partPost,
             }
         }
         /*****************************************************************/
-        case SD_DISPLAY_PRELOADER: {
+        case DISPLAY_PRELOADER: {
             return {
                 ...state,
                 isFetching: action.isFetching,
             }
         }
         /*****************************************************************/
-        case SD_SINGLE_STRING: {
-            let singleString = state.fullData.find(string => string.id === action.stringId);
+        case SINGLE_STRING: {
+            let singleString = state.fullData.find(string => string.id === action.id
+                && string.firstName === action.firstName);
+            debugger;
 
             return {
                 ...state,
-                stringId: action.stringId,
                 singleString: singleString,
             }
         }
         /*****************************************************************/
-        case SD_SORT: {
+        case SORT: {
             let fullDataSortById;
             let column = action.column;
             let th = {...state.tableHeader};
@@ -211,34 +228,42 @@ const SDReducer = (state = initialState, action) => {
             return {
                 ...state,
                 fullData: fullDataSortById,
-                SD: partPost,
+                BD: partPost,
                 sort: sort,
                 tableHeader: th,
             }
         }
         /*****************************************************************/
-        case SD_UPDATE_SEARCH_INPUT: {
+        case UPDATE_SEARCH_INPUT: {
             return {
                 ...state,
                 searchInput: action.text,
             }
         }
         /*****************************************************************/
-        case SD_SEARCH: {
+        case SEARCH: {
             let partPost;
             let tableHeader = {id: '', firstName: '', lastName: '', email: '', phone: ''};
             let sort = {direction: 2, preColumn: 'id'};
+
             if (state.searchInput === '') {
                 partPost = state.copyFullData.slice(0, 50);
+                let pagesCount = Math.ceil((state.copyTotalPostCount) / state.pageSize);
+                let pages = [];
+
+                for (let i = 1; i <= pagesCount; i++) {
+                    pages.push(i);
+                }
 
                 return {
                     ...state,
                     fullData: [...state.copyFullData],
-                    SD: partPost,
+                    BD: partPost,
                     totalPostCount: state.copyTotalPostCount,
                     tableHeader: tableHeader,
                     sort: sort,
                     currentPage: 1,
+                    pages: pages,
                 }
             } else if (state.searchInput.length > 0) {
                 let strId;
@@ -253,46 +278,53 @@ const SDReducer = (state = initialState, action) => {
                         || (elem.phone.toLowerCase().indexOf(state.searchInput.toLowerCase()) !== -1)
                     )
                 });
-
                 partPost = filterFullData.slice(0, 50);
                 let newTotalPostCount = filterFullData.length;
+                let pagesCount = Math.ceil((newTotalPostCount) / state.pageSize);
+                let pages = [];
+
+                for (let i = 1; i <= pagesCount; i++) {
+                    pages.push(i);
+                }
 
                 return {
                     ...state,
                     fullData: filterFullData,
-                    SD: partPost,
+                    BD: partPost,
                     currentPage: 1,
                     totalPostCount: newTotalPostCount,
                     tableHeader: tableHeader,
                     sort: sort,
+                    pages: pages,
                 }
             }
-        }
+}
         /*****************************************************************/
         default:
             return state;
     }
 }
 
-export const addSmallDataPostActionCreator = () => ({type: SD_ADD_POST});
-export const openFormSmallDataActionCreator = () => ({type: SD_OPEN_FORM});
-export const updateSmallDataPostActionCreator = (newText) => ({type: SD_UPDATE_INPUT_TEXT, text: newText});
-export const setSmallDataPostActionCreator = (SD) => ({type: SD_SET_POSTS, SD});
-export const setSmallDataCurrentPageActionCreator = (currentPage) => ({type: SD_SET_CURRENT_PAGE, currentPage});
-export const setSmallDataDisplayPreloader = (isFetching) => ({type: SD_DISPLAY_PRELOADER, isFetching});
-export const getSmallDataSingleString = (stringId) => ({type: SD_SINGLE_STRING, stringId});
-export const sortSmallDataActionCreator = (column) => ({type: SD_SORT, column});
-export const setSmallDataTotalPostCount = (count) => ({type: SD_SET_TOTAL_POST_COUNT, count});
-export const updateSmallDataSearchActionCreator = (newText) => ({type: SD_UPDATE_SEARCH_INPUT, text: newText});
-export const filterSmallDataActionCreator = () => ({type: SD_SEARCH});
-export const SmallDataGetPostsThunkCreator = () => {
+
+export const addPostActionCreator = () => ({type: ADD_POST});
+export const openFormActionCreator = () => ({type: OPEN_FORM});
+export const updatePostActionCreator = (newText) => ({type: UPDATE_INPUT_TEXT, text: newText});
+export const setPostActionCreator = (BD) => ({type: SET_POSTS, BD});
+export const setCurrentPageActionCreator = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
+export const setDisplayPreloader = (isFetching) => ({type: DISPLAY_PRELOADER, isFetching});
+export const getSingleStringActionCreator = (id, firstName) => ({type: SINGLE_STRING, id, firstName});
+export const sortActionCreator = (column) => ({type: SORT, column});
+export const setPagination = (count) => ({type: SET_PAGINATION, count});
+export const updateSearchActionCreator = (newText) => ({type: UPDATE_SEARCH_INPUT, text: newText});
+export const filterActionCreator = () => ({type: SEARCH});
+export const getPostsThunkCreator = (db) => {
     return (dispatch) => {
-        dispatch(setSmallDataDisplayPreloader(true));
-        getSmallDataAxios().then(response => {
-            dispatch(setSmallDataDisplayPreloader(false));
-            dispatch(setSmallDataPostActionCreator(response.data));
-            dispatch(setSmallDataTotalPostCount(response.data.length));
+        dispatch(setDisplayPreloader(true));
+        getDataAxios(db).then(response => {
+            dispatch(setDisplayPreloader(false));
+            dispatch(setPostActionCreator(response.data));
+            dispatch(setPagination(response.data.length));
         })
     }
 }
-export default SDReducer;
+export default tableReducer;
