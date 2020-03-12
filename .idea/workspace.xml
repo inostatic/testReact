@@ -2,22 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36bc88da-7db9-409e-bd10-07fe8919b29a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/TableContainer.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/API/API.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/API/API.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/AddString/BDAddStringContainer.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/AddString/SDAddStringContainer.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/Bigdata.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/Post/BDPostContainer.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/Post/Post.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Post/Post.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/Post/SDPostContainer.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/SingleInfo/SingleInfo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/SingleInfo/SingleInfo.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/Smalldata.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/TableHeader/TableHeader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/TableHeader/TableHeader.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/BD-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/table-reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/SD-reducer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/redux-store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/redux-store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/table-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/table-reducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +81,7 @@
       <workItem from="1583774855618" duration="11159000" />
       <workItem from="1583828018123" duration="492000" />
       <workItem from="1583862209721" duration="632000" />
-      <workItem from="1584030665272" duration="12517000" />
+      <workItem from="1584030665272" duration="13552000" />
     </task>
     <servers />
   </component>

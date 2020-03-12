@@ -3,7 +3,6 @@ import './SingleInfo.css';
 
 
 const SingleInfo = (props) => {
-    debugger;
     return (
       <>
           <div>Выбран пользователь: <span className="SI">{props.singleString.firstName} {props.singleString.lastName}</span></div>

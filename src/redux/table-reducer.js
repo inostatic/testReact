@@ -135,6 +135,13 @@ const tableReducer = (state = initialState, action) => {
             let partPost = action.BD.slice(state.currentPage - 1, state.pageSize);
             let tableHeader = {id: '', firstName: '', lastName: '', email: '', phone: ''};
             let sort = {direction: 2, preColumn: 'id'};
+            let newTextInput = {
+                input_id: '',
+                input_firstName: '',
+                input_lastName: '',
+                input_email: '',
+                input_phone: ''
+            };
             return {
                 ...state,
                 BD: partPost,
@@ -143,6 +150,10 @@ const tableReducer = (state = initialState, action) => {
                 tableHeader: tableHeader,
                 sort: sort,
                 currentPage: 1,
+                searchInput: '',
+                newTextInput: newTextInput,
+                openForm: false,
+                singleString: null,
             }
         }
         /*****************************************************************/
@@ -176,7 +187,6 @@ const tableReducer = (state = initialState, action) => {
         case SINGLE_STRING: {
             let singleString = state.fullData.find(string => string.id === action.id
                 && string.firstName === action.firstName);
-            debugger;
 
             return {
                 ...state,
