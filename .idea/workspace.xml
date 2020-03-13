@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="36bc88da-7db9-409e-bd10-07fe8919b29a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TableContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/TableContainer.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/table-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/table-reducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,19 +34,19 @@
     <property name="ts.external.directory.path" value="D:\OSPanel\domains\testReact\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\OSPanel\domains\testReact\src\components\Table" />
+      <recent name="D:\OSPanel\domains\testReact\src\components" />
+      <recent name="D:\OSPanel\domains\testReact\src\components\Table\TableHeader" />
+      <recent name="D:\OSPanel\domains\testReact\src\components\Table\Post" />
+      <recent name="D:\OSPanel\domains\testReact\src\redux\data" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\OSPanel\domains\testReact\src\components\Table\SingleInfo" />
       <recent name="D:\OSPanel\domains\testReact\src\components\Table\Post" />
       <recent name="D:\OSPanel\domains\testReact\src\components\Table\AddString" />
       <recent name="C:\OSPanel\domains\react\project\02-first-project\src\components\Table\Post" />
       <recent name="C:\OSPanel\domains\react\project\02-first-project\src\components\Table\AddString" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\OSPanel\domains\testReact\src\components" />
-      <recent name="D:\OSPanel\domains\testReact\src\components\Table\TableHeader" />
-      <recent name="D:\OSPanel\domains\testReact\src\components\Table\Post" />
-      <recent name="D:\OSPanel\domains\testReact\src\redux\data" />
-      <recent name="D:\OSPanel\domains\react\my-app\src\components\Table" />
     </key>
   </component>
   <component name="RunManager">
@@ -82,6 +84,7 @@
       <workItem from="1583828018123" duration="492000" />
       <workItem from="1583862209721" duration="632000" />
       <workItem from="1584030665272" duration="13552000" />
+      <workItem from="1584085811993" duration="1313000" />
     </task>
     <servers />
   </component>

@@ -58,6 +58,8 @@ const tableReducer = (state = initialState, action) => {
                 lastName: state.newTextInput.input_lastName,
                 email: state.newTextInput.input_email,
                 phone: state.newTextInput.input_phone,
+                address: {streetAddress: '',city: '',state: '',zip: ''},
+                description: '',
             };
             let newTextInput = {
                 input_id: '',

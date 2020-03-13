@@ -1,5 +1,5 @@
 import React from "react";
-import Post from "./Table/Post/Post";
+import Post from "./Post/Post";
 import {connect} from "react-redux";
 import {
     getPostsThunkCreator,
@@ -8,12 +8,12 @@ import {
     setCurrentPageActionCreator,
     sortActionCreator,
     updateSearchActionCreator, addPostActionCreator, updatePostActionCreator, openFormActionCreator,
-} from "../redux/table-reducer";
-import Preloader from "./common/Preloader/Preloader";
-import Search from "./Table/Search/Search";
-import SingleInfo from "./Table/SingleInfo/SingleInfo";
-import TableHeader from "./Table/TableHeader/TableHeader";
-import AddString from "./Table/AddString/AddString";
+} from "../../redux/table-reducer";
+import Preloader from "../common/Preloader/Preloader";
+import Search from "./Search/Search";
+import SingleInfo from "./SingleInfo/SingleInfo";
+import TableHeader from "./TableHeader/TableHeader";
+import AddString from "./AddString/AddString";
 import {withRouter} from "react-router-dom";
 
 
@@ -24,10 +24,10 @@ class TableCont extends React.Component {
 
     render() {
         if (this.props.isFetching) {
-            return <><Preloader/></>
+            return <div><Preloader/></div>
         } else {
             return (
-                <>
+                <div>
                     <AddString newTextInput={this.props.newTextInput}
                                keyButton={this.props.keyButton}
                                openForm={this.props.openForm}
@@ -49,7 +49,7 @@ class TableCont extends React.Component {
                             searchInput={this.props.searchInput}
                     />
                     {this.props.singleString !== null ? <SingleInfo singleString={this.props.singleString}/> : null}
-                </>
+                </div>
             )
         }
     }
